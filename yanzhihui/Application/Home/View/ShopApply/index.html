@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta id="twcClient" content="false" name="twcClient"/>
+    <title>商家申请-颜之惠</title>
+    <!-- External CSS -->
+    <link href="__PUBLIC____MODULE__/styles/common.css" rel="stylesheet" type="text/css"/>
+</head>
+<body style="background:#6ad1e0;">
+<div class="form_body">
+    <div class="form_layIn">
+        <div class="bg_img"><img src="__PUBLIC____MODULE__/images/bg_img_1.jpg"></div>
+        <form>
+            <ul>
+                <input type="hidden" name="user_id" value="{$Think.get.user_id}">
+                <li><span>商家名称</span><input type="text" name="title"></li>
+                <li><span>所属商圈</span><input type="text" name="district"></li>
+                <li><span>商家电话</span><input type="number" name="telephone"></li>
+            </ul>
+            <div id="btn" class="btn">
+                <img src="__PUBLIC____MODULE__/images/bg_btn_1.png">
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="__PUBLIC__/Static/scripts/jquery-1.11.3.min.js"></script>
+<script>
+    $(function(){
+        $('form ul li').each(function(){
+            $(this).find('input').css('width', $(this).width() - 100);
+        })
+    })
+</script>
+<script>
+    $('#btn').click(function(){
+        $.ajax({
+            type:'POST',
+            url:"{:U('ShopApply/add')}",
+            data:$('form').serialize(),
+            dataType:"json",
+            success: function(json) {
+                if(json.result === 100){
+                    alert(json.msg);
+                    history.go(0)
+                }else{
+                    alert(json.msg);
+                }
+            },
+            error: function(XMLHttpRequest) {
+                alert("操作失败，失败状态码：" + XMLHttpRequest.status)
+            }
+        });
+        return false;
+    });
+</script>
+</body>
+</html>

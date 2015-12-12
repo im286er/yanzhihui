@@ -1,0 +1,65 @@
+﻿@charset "utf-8";
+/* reset */
+body,h1,h2,h3,h4,blockquote,p,dl,dt,dd,ul,ol,li,th,td,form,fieldset,legend,button,input,textarea{ margin:0; padding:0;}
+body,button,input,select,textarea{ font:14px/1.5 "微软雅黑",\5b8b\4f53,arial,sans-serif;}
+body{ text-align:left; color:#fff; background:#74d0e1;}
+button,input,select,textarea,h1,h2,h3,h4{ font-size:100%;}
+input,select,textarea{ outline:none; resize:none;}
+em,i{ font-style:normal;}
+ol,ul{ list-style:none;}
+img,fieldset{ border:0; vertical-align:middle;}
+table{ table-layout:fixed;}
+table th,table td{ word-wrap:break-word; word-break:break-all;}
+.cf:after{ height:0; display:block; overflow:hidden; content:"\20"; clear:both;}
+.cf{ *zoom:1;}
+.clear{ height:0; overflow:hidden; clear:both; font-size:0; line-height:0; visibility:hidden;}
+a{ color:#fff; text-decoration:none; cursor:pointer;}
+a:hover{ color:#fff;}
+.fl{ float:left;}
+.wrap{ width:1100px; height:auto; overflow:hidden; margin:0 auto;}
+.cBlue{ color:#74d0e1;}
+
+/* header*/
+.header{ width:100%; height:56px; padding:12px 0;}
+.header .logo{ width:190px; height:56px;}
+.header .nav{ line-height:56px; float:right;}
+.header .nav a{ margin-left:30px; float:right;}
+
+/* index */
+.index{ width:100%;}
+.index .wrap{ height:700px; background:url(../images/bg_index.jpg) 760px 0 no-repeat; background-size:auto 58%;}
+.index .focus{ width:570px; height:700px; position:relative; overflow:hidden;}
+.index .focus .pic{ width:470px; height:650px; overflow:hidden; margin-left:50px; _display:inline;}
+.index .focus .num{ width:100%; height:20px; position:absolute; left:0; bottom:15px; text-align:center;}
+.index .focus .num li{ padding:4px; margin:0 10px; background:url(../images/focus_radiu_2.png) center center no-repeat; _background-image:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/focus_radiu_2.png'); font-size:0; display:inline-block;}
+.index .focus .num li.on{ padding:4px; margin:0 10px; background:url(../images/focus_radiu_1.png) center center no-repeat; _background-image:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/focus_radiu_1.png');}
+.index .focus .prev,
+.index .focus .next{ width:20px; height:36px; background:#000; position:absolute; top:280px;}
+.index .focus .prev{ left:0; background:url(../images/focus_prev.png) center center no-repeat; _background-image:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/focus_prev.png'); font-size:0; display:inline-block;}
+.index .focus .next{ right:0; background:url(../images/focus_next.png) center center no-repeat; _background-image:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/focus_next.png'); font-size:0; display:inline-block;}
+
+.index .code{ width:135px; padding:440px 0 0 275px;}
+.index .code ul{ width:135px; float:left; text-align:center;}
+.index .code ul li{ margin-bottom:10px;}
+
+.index .btn{ width:320px; height:40px; padding:20px 0 0 180px;}
+.index .btn a{ width:135px; height:40px; display:block; float:left; margin-left:20px;}
+.index .btn .ios{ background:url(../images/bg_btn_2.png) 0 0 no-repeat;}
+.index .btn .android{ background:url(../images/bg_btn_2.png) 0 -40px no-repeat;}
+
+/* footer */
+.footer{ width:100%; height:80px; line-height:80px; text-align:center;}
+
+/* pop */
+.popBg{ width:100%; height:100%; display:block; position:absolute; z-index:10; left:0; top:0; display:none;}
+.pop{ width:700px; height:455px; position:absolute; z-index:99; left:50%; top:50%; margin:-227px 0 0 -350px; color:#333; background:url(../images/bg_pop.png) 0 0 no-repeat; display:none;}
+.pop .iTitle{ width:620px; height:80px; padding:0 40px; margin-bottom:20px; line-height:80px; border-bottom:1px solid #ddd; font-size:24px;}
+.pop .iTitle .close{ width:36px; height:36px; float:right; margin-top:22px; background:url(../images/icon_close.png) 0 0 no-repeat;}
+.pop p{ width:620px; padding:0 40px; line-height:26px;}
+.pop .bTitle{ font-size:16px; margin-top:10px; font-weight:bold;}
+.pop .iLeft{ width:460px; padding:45px 0 0 40px;}
+.pop .iLeft .iTit{ font-size:16px; font-weight:bold;}
+.pop .iLeft ul{ float:left; margin:30px 30px 0 0; text-align:center;}
+.pop .iLeft ul li{ margin-bottom:10px;}
+.pop .iRight ul{ padding-top:45px;}
+.pop .iRight ul li{ font-size:16px; line-height:28px;}

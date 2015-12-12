@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>{$Think.lang.TPL_welcome}</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="__PUBLIC____MODULE__/styles/ruis-common.css">
+</head>
+<body>
+<div class="dMain">
+    <div class="ifrTitle yh">
+        <div class="mark">验证优惠劵</div>
+    </div>
+
+    <div class="dEdit">
+        <form id="formEdit" autocomplete="off">
+            <ul>
+                <li class="liTit"><i class="cRed">*</i> 验证码</li>
+                <li class="liCon"><input class="inputTxt w310 fl" name="verify" type="text"></li>
+            </ul>
+            <ul>
+                <li class="liSave"><a href="{:U('do_consume')}" class="aButtonB w110 formSub">验证消费</a></li>
+            </ul>
+        </form>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="__PUBLIC__/Static/scripts/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC____MODULE__/scripts/ruis-common.js"></script>
+</body>
+</html>

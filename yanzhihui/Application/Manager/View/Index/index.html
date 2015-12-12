@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>{$Think.lang.TPL_welcome}</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="__PUBLIC____MODULE__/styles/ruis-common.css">
+    <!-- In-document CSS -->
+    <style>
+        html,body{ height:100%;}
+    </style>
+</head>
+<body>
+<div class="dMainIndex cf">
+    <div class="dMainIndexT">
+        <div class="MenuSliTab" id="MenuSliTab">
+            <volist name="menus.top" id="voTop">
+                <span>{$voTop.title}</span>
+            </volist>
+        </div>
+        <div class="dMainTmember">
+            <div class="dMainTmemberPop">
+                <a href="{:U('Public/password')}" target="myframe">修改密码</a>
+                <a href="{:U('Public/logout')}">退出</a>
+            </div>
+            <i class="iImg1"></i><i class="iTxt">{$Think.session.user_name}</i><i class="iImg2"></i>
+        </div>
+    </div>
+
+    <div class="dMainIndexL">
+        <div class="dLogo"><a href="__MODULE__"><img src="__PUBLIC____MODULE__/images/logo.png"></a></div>
+        <div class="dMenuL" id="dMenuL">
+            <volist name="menus.top" id="voTop">
+                <div>
+                    <volist name="menus.child" id="voParent">
+                        <eq name="voParent.pid" value="$voTop.id">
+                            <dl>
+                                <dt>{$voParent.title}</dt>
+                                <volist name="voParent.child" id="voChild">
+                                    <dd>
+                                        <a href="__MODULE__/{$voChild.url}" target="myframe">{$voChild.title}</a>
+                                    </dd>
+                                </volist>
+                            </dl>
+                            <i class="iLine"></i>
+                        </eq>
+                    </volist>
+                </div>
+            </volist>
+        </div>
+    </div>
+
+    <div class="dMainIndexR">
+        <div class="dIframe">
+            <iframe id="myframe" name="myframe" width="100%" height="100%" allowtransparency="true" frameborder="0" scrolling="auto" src="{:U('Index/home')}">
+            </iframe>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="__PUBLIC__/Static/scripts/jquery-1.11.3.min.js"></script>
+<script>
+    /* 最小宽度和高度 */
+    function Resize() {
+        if($(window).width() < 1200) {
+            $(".dMainIndex").css("width","1200px");
+        }else if($(window).width() > 1960) {
+            $(".dMainIndex").css("width","1960px");
+        }else{
+            $(".dMainIndex").css("width","100%");
+        };
+    }
+    Resize();
+    $(window).resize(function(){Resize();});
+
+    /* 上导航 */
+    function Pull(o1,o2) {
+        this.obj = o1;
+        this.pop = o2;
+        this.time = 200;
+        this.init();
+    }
+    Pull.prototype = {
+        init:function() {
+            var self = this;
+            this.obj.mouseover(function(){
+                $(this).attr("mouse","on").addClass("mouseOn");
+                self.pop.fadeIn(self.time);
+            });
+            this.obj.mouseout(function(){
+                $(this).attr("mouse","out").removeClass("mouseOn");
+                setTimeout(function(){
+                    if(self.obj.attr("mouse") != "on") {
+                        self.pop.fadeOut(self.time);
+                    }
+                },50);
+            });
+        }
+    };
+    new Pull($(".dMainTmember"),$(".dMainTmemberPop"));
+
+    /* 左导航 */
+    function MenuL(o) {this.init(o);}
+    MenuL.prototype = {
+        init:function(o) {
+            var self = this;
+            self.tab = o.tab;
+            self.con = o.con;
+            self.curTab = self.curA = 0;
+            self.con.each(function(i) {
+                self.con.eq(i).find("a").each(function(j) {
+                    $(this).attr("conNum",i).attr("aNum",j);
+                });
+            });
+            self.tab.eq(self.curTab).addClass("cur");
+            self.con.eq(self.curTab).addClass("cur");
+            self.con.eq(self.curTab).find("a").eq(self.curA).addClass("cur");
+            self.tab.each(function(i) {
+                $(this).click(function() {
+                    if(i != self.curTab) {
+                        self.tab.eq(self.curTab).removeClass("cur");
+                        self.con.eq(self.curTab).removeClass("cur");
+                        self.tab.eq(i).addClass("cur");
+                        self.con.eq(i).addClass("cur");
+                        self.con.find(".cur").removeClass("cur");
+                        self.con.eq(i).find("a").eq(0).addClass("cur");
+                        self.curTab = i;
+                        self.curA = 0;
+                        $("#myframe").attr("src",self.con.eq(i).find("a").eq(0).attr("href"));
+                    }
+                });
+                self.con.eq(i).find("a").each(function(j) {
+                    $(this).click(function() {
+                        if(j != self.curA) {
+                            self.con.eq(i).find(".cur").removeClass("cur");
+                            $(this).addClass("cur");
+                            self.curA = j;
+                        }
+                    });
+                });
+            });
+        },
+        change:function(link) {
+            var self = this;
+            self.con.find("a").each(function() {
+                if(link == $(this).attr("href")) {
+                    var i = $(this).attr("conNum");
+                    var j = $(this).attr("aNum");
+                    if(i != self.curTab) {
+                        self.tab.eq(self.curTab).removeClass("cur");
+                        self.con.eq(self.curTab).removeClass("cur");
+                        self.tab.eq(i).addClass("cur");
+                        self.con.eq(i).addClass("cur");
+                        self.con.find(".cur").removeClass("cur");
+                        self.con.eq(i).find("a").eq(j).addClass("cur");
+                        self.curTab = i;
+                        self.curA = j;
+                    }else{
+                        if(j != self.curA) {
+                            self.con.find(".cur").removeClass("cur");
+                            self.con.eq(i).find("a").eq(j).addClass("cur");
+                            self.curA = j;
+                        }
+                    }
+                    return false;
+                }
+            });
+        }
+    };
+    var MenuL = new MenuL({
+        tab:$("#MenuSliTab span"),
+        con:$("#dMenuL div")
+    });
+    $(function(){
+        $('#dMenuL div').each(function(){
+            $(this).find('.iLine').last().hide();
+        })
+    })
+</script>
+</body>
+</html>

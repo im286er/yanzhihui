@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>{$Think.lang.TPL_welcome}</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="__PUBLIC____MODULE__/styles/ruis-common.css">
+    <!-- In-document CSS -->
+    <style>
+        html, body {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="dLogin">
+    <div class="dLoginMain">
+        <div class="dLoginLogo"></div>
+        <i class="dLoginLine"></i>
+
+        <div class="dLoginBox">
+            <form method="post">
+                <ul>
+                    <li><em>用户名</em><i><input name="username" type="text"></i></li>
+                    <li><em>密　码</em><i><input name="password" type="password"></i></li>
+                    <li><em>验证码</em><i><input name="verify" type="text">
+                    </i><img id="verifyImg" src="{:U('verify')}" width="80" height="32" title="点击刷新验证码"/></li>
+                </ul>
+                <div class="dLoginError"></div>
+                <input name="formSub" type="button" class="inSub" value="登录">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="dLoginBot">{$Think.lang.TPL_copyright}</div>
+
+<!-- JavaScript -->
+<script src="__PUBLIC__/Static/scripts/jquery-1.11.3.min.js"></script>
+<script>
+    $("#verifyImg").click(function () {
+        $(this).attr("src", "");
+        $(this).attr("src", "{:U('verify')}");
+    });
+
+    $("input[name='formSub']").click(function () {
+        formSubmit();
+    })
+    $(document).keydown(function (event) {
+        var e = window.event || event;
+        var k = e.keyCode || e.which;
+        if (k == "13") {
+            formSubmit();
+        }
+    });
+    function formSubmit() {
+        $(".dLoginError").html("").css("display", "none");
+        $.ajax({
+            type: "POST",
+            url: "{:U('login_check')}",
+            data: $("form").serialize(),
+            dataType: "json",
+            success: function (json) {
+                if (json.result === 1) {
+                    window.location.href = "__MODULE__";
+                } else {
+                    $(".dLoginError").html(json.msg).css("display", "block");
+                }
+            },
+            error: function (XMLHttpRequest) {
+                $(".dLoginError").html("操作失败，失败状态码：" + XMLHttpRequest.status).css("display", "block");
+            }
+        })
+        return false;
+    }
+</script>
+</body>
+</html>
