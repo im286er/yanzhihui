@@ -24,8 +24,10 @@ class TopicLikeController extends BaseController {
             $result = $model->do_add();
             /* 返回信息 */
             if ($result) {
-                /* 成功推送IM */
-                if ($IM_upload) {
+                /* 查询被推送用户的推送状态 */
+                $push_status = D('User')->find_push_status($IM_user_id,2);
+                /* 成功并且IM允许，推送IM */
+                if ($IM_upload && ($push_status == 1)) {
                     import('Api.ORG.EasemobIMSDK');
                     $rest = new \Hxcall();
                     $sender = C('EASEMOB.EASEMOB_PREFIX') . 'topic_like_add';

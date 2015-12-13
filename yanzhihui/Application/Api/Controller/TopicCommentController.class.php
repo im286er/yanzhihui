@@ -14,6 +14,11 @@ class TopicCommentController extends BaseController {
         }
     }
 
+    public function test(){
+        $push = D('User')->find_push_status(1,1);
+        echo $push;
+    }
+
     /**
      * 发布话题评论 add
      */
@@ -24,8 +29,10 @@ class TopicCommentController extends BaseController {
             $result = $model->do_add();
             /* 返回信息 */
             if ($result) {
-                /* 成功推送IM */
-                if ($IM_upload) {
+                /* 查询被推送用户的推送状态 */
+                $push_status = D('User')->find_push_status($IM_user_id,1);
+                /* 成功并且IM允许，推送IM */
+                if ($IM_upload && ($push_status == 1)) {
                     import('Api.ORG.EasemobIMSDK');
                     $rest = new \Hxcall();
                     $sender = C('EASEMOB.EASEMOB_PREFIX') . 'topic_comment_add';
@@ -40,7 +47,6 @@ class TopicCommentController extends BaseController {
                     );
                     $rest->hx_send($sender, $receiver, $msg, $ext);
                 }
-
                 $this->ajaxReturn(array('RESPONSE_STATUS' => 100, 'Tips' => L('YZ_return_success')));
             } else {
                 $this->return_post($model);

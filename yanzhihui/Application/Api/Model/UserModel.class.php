@@ -55,6 +55,114 @@ class UserModel extends CommonModel {
     /* 模型自动完成 */
 
     /* 数据操作 */
+
+
+
+    /**
+     * 我的去向
+     */
+    public function do_my_went() {
+        /* 定义变量 */
+        $user_id = I('get.user_id');
+        $where['user_id'] = array('EQ', $user_id);
+        $field = 'went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img';
+        $order = 'went.create_time desc';
+        $list = M('ShopUserWent')
+            ->alias('went')
+            ->field($field)
+            ->where($where)
+            ->join('LEFT JOIN xian_shop s on s.id = went.user_id')
+            ->order($order)
+            ->select();
+        $_list = array();
+        if($list){
+            foreach ($list as $k => $v) {
+                if($v['img']){
+                    $v['img'] = C('APP_URL') . '/Uploads/Images/Topic/' . $v['img'];
+                }
+                $_list[] = $v;
+            }
+        }
+        /* 读取json */
+        $list = empty($_list) ? array() : $list;
+        $jsonInfo['list'] = arr_content_replace($_list);
+        return $jsonInfo;
+    }
+
+
+
+    /**
+     * 修改私信门槛 do_edit_chat_level
+     * 参数：user_id：用户id
+     *       value：颜币值
+     */
+    public function do_edit_chat_level() {
+        /* 定义变量 */
+        $data = array();
+        $user_id = I('post.user_id');
+        $_value = I('post.value');
+        $value=intval($_value);
+        $data['chat_level'] = $value;
+        $where['id'] = array('EQ', $user_id);
+        $result = $this->where($where)->save($data);
+        return $result;
+    }
+
+
+
+    /**
+     * 修改通知开关 do_edit_notify
+     * 参数：type：1->评论通知开关，2->收到颜币通知开关，3->关注的人的去向开关，4->私信通知
+     *       value：0->关闭，1->打开
+     */
+    public function do_edit_notify() {
+        /* 定义变量 */
+        $data = array();
+        $user_id = I('post.user_id');
+        $_type = I('post.type');
+        $type=intval($_type);
+        $_value = I('post.value');
+        $value=intval($_value);
+        if($type == 1){
+            $data['comment_notify'] = $value;
+        }else if($type == 2){
+            $data['get_gold_notify'] = $value;
+        }else if($type == 3){
+            $data['trace_notify'] = $value;
+        }else if($type == 4){
+            $data['letter_notify'] = $value;
+        }
+        $where['id'] = array('EQ', $user_id);
+        $result = $this->where($where)->save($data);
+        return $result;
+    }
+
+    
+
+
+    /**
+     * 查询用户推送状态 find_push_status:$IM_user_id->用户id，$type->1评论2得到颜币3去向4私信
+     */
+    public function find_push_status($IM_user_id,$type) {
+        $where['id'] = array('EQ', $IM_user_id);
+        $field = '';
+        if($type == 1){
+            $field = 'comment_notify';
+        }else if($type == 2){
+            $field = 'get_gold_notify';
+        }else if($type == 3){
+            $field = 'trace_notify';
+        }else if($type == 4){
+            $field = 'letter_notify';
+        }
+        $result = $this->where($where)->field($field)->select();
+        return $result[0][$field];
+    }
+
+
+
+
+    
     /**
      * 注册用户 do_register
      */
@@ -270,38 +378,9 @@ class UserModel extends CommonModel {
         return false;
     }
 
-    /**
-     * 修改通知开关 do_edit_notify
-     * 参数：type：1->评论通知开关，2->收到颜币通知开关，3->关注的人的去向开关
-     *       value：0->关闭，1->打开
-     */
-    public function do_edit_notify() {
-        /* 定义变量 */
 
-        /*$user = M('user');
-        $list = $user->find();
-        var_dump($list);
-        exit;*/
-        $data = array();
-        $user_id = I('post.user_id');
-        $type = I('post.type');
-        $value = I('post.value');
-        //var_dump($user_id);
-        //var_dump($type);
-        //var_dump($value);
-        if($type == 1){
-            $data['comment_notify'] = intval($value);
-        }else if($type == 2){
-            $data['get_gold_notify'] = intval($value);
-        }else if($type == 3){
-            $data['trace_notify'] = intval($value);
-        }
-        //$data['nick_name'] = '启华';
-        //var_dump($data);
-        $where['id'] = array('EQ', $user_id);
-        $result = $this->where($where)->save($data);
-        return $result;
-    }
+
+
 
     /**
      * 修改密码 do_edit_password

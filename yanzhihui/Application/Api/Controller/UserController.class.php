@@ -2,6 +2,64 @@
 namespace Api\Controller;
 
 class UserController extends BaseController {
+
+
+
+    /**
+     * 获取我的去向
+     */
+    public function my_went() {
+        if (IS_GET) {
+            /* 定义变量 */
+            $model = D(CONTROLLER_NAME);
+            $jsonData = $model->do_my_went();
+            $this->ajaxReturn(array('RESPONSE_STATUS' => 100, 'Tips' => L('YZ_return_success'), 'RESPONSE_INFO' => $jsonData));
+        }
+        $this->ajaxReturn(array('RESPONSE_STATUS' => 500, 'Tips' => L('YZ_return_failure')));
+    }
+
+
+
+    /**
+     * 修改私信门槛
+     */
+    public function edit_chat_level() {
+        if (IS_POST) {
+            /* 定义变量 */
+            $model = D(CONTROLLER_NAME);
+            $result = $model->do_edit_chat_level();
+            /* 返回信息 */
+            //var_dump($result);
+            if ($result) {
+                $this->ajaxReturn(array('RESPONSE_STATUS' => 100, 'Tips' => L('YZ_return_success')));
+            } else {
+                $this->return_post($model);
+            }
+        }
+        $this->ajaxReturn(array('RESPONSE_STATUS' => 500, 'Tips' => L('YZ_return_failure')));
+    }
+
+
+    /**
+     * 修改通知开关
+     */
+    public function edit_notify() {
+        if (IS_POST) {
+            /* 定义变量 */
+            $model = D(CONTROLLER_NAME);
+            $result = $model->do_edit_notify();
+            /* 返回信息 */
+            //var_dump($result);
+            if ($result) {
+                $this->ajaxReturn(array('RESPONSE_STATUS' => 100, 'Tips' => L('YZ_return_success')));
+            } else {
+                $this->return_post($model);
+            }
+        }
+        $this->ajaxReturn(array('RESPONSE_STATUS' => 500, 'Tips' => L('YZ_return_failure')));
+    }
+
+
     /**
      * 获取验证码
      */
@@ -138,24 +196,15 @@ class UserController extends BaseController {
         $this->ajaxReturn(array('RESPONSE_STATUS' => 500, 'Tips' => L('YZ_return_failure')));
     }
 
-    /**
-     * 修改通知开关
-     */
-    public function edit_notify() {
-        if (IS_POST) {
-            /* 定义变量 */
-            $model = D(CONTROLLER_NAME);
-            $result = $model->do_edit_notify();
-            /* 返回信息 */
-            //var_dump($result);
-            if ($result) {
-                $this->ajaxReturn(array('RESPONSE_STATUS' => 100, 'Tips' => L('YZ_return_success')));
-            } else {
-                $this->return_post($model);
-            }
-        }
-        $this->ajaxReturn(array('RESPONSE_STATUS' => 500, 'Tips' => L('YZ_return_failure')));
+    public function test(){
+        $User = M("User");
+        $list = $User->select();
+        var_dump($list);
     }
+
+
+
+
 
     /**
      * 重置密码
