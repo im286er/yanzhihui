@@ -114,7 +114,7 @@ function token_check() {
  */
 function get_user_info($user_id = NULL, $telephone = NULL, $other = array()) {
     if ($user_id || $telephone || is_array($other)) {
-        $field = 'id,telephone,nick_name,sex,upfile_head,description,province,city,upfile_head_auth,upfile_head_auth_type,IM_username,IM_password,like_count,like_now_count,like_consume_count,attention_count,fans_count,auth_token,comment_notify,get_gold_notify,trace_notify,letter_notify';
+        $field = 'id,telephone,nick_name,sex,upfile_head,description,province,city,upfile_head_auth,upfile_head_auth_type,IM_username,IM_password,like_count,like_now_count,like_consume_count,attention_count,fans_count,auth_token,comment_notify,get_gold_notify,trace_notify,letter_notify,top_times,top_best';
         if ($user_id) {
             $where['id'] = array('EQ', $user_id);
         } else if ($telephone) {

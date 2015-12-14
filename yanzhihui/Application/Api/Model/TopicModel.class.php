@@ -57,7 +57,7 @@ class TopicModel extends CommonModel {
         } else {
             /* 查询条件 */
             $field = 'topic.id,topic.upfile,topic.content,topic.province,topic.city,topic.longitude,topic.latitude,topic.create_time,
-                      user.id as user_id,user.nick_name,user.sex,user.upfile_head as user_upfile_head,topic.like_count,
+                      user.id as user_id,user.nick_name,user.sex,user.top_times,user.top_best,user.upfile_head as user_upfile_head,topic.like_count,
                       0 as comment_count,0 as is_like,0 as attention_relation';
             $where['topic.status'] = array('EQ', 1);
             $where['topic.display'] = array('EQ', 1);
@@ -537,7 +537,7 @@ class TopicModel extends CommonModel {
         } else {
             /* 查询条件 */
             $field = 'topic.upfile,topic.content,topic.province,topic.city,topic.longitude,topic.latitude,topic.comment_count,topic.create_time,
-                      user.id as user_id,user.nick_name,user.sex,user.upfile_head as user_upfile_head,0 as is_be_shielded';
+                      user.id as user_id,user.nick_name,user.top_times,user.top_best,user.chat_level,user.sex,user.upfile_head as user_upfile_head,0 as is_be_shielded';
             $where['topic.id'] = array('EQ', $topic_id);
             $where['topic.status'] = array('EQ', 1);
             $where['topic.display'] = array('EQ', 1);

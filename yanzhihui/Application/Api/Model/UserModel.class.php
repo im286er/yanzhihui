@@ -84,7 +84,7 @@ class UserModel extends CommonModel {
             }
         }
         /* 读取json */
-        $list = empty($_list) ? array() : $list;
+        $_list = empty($_list) ? array() : $list;
         $jsonInfo['list'] = arr_content_replace($_list);
         return $jsonInfo;
     }
@@ -447,7 +447,7 @@ class UserModel extends CommonModel {
         $get_user_id = I('get.get_user_id');
 
         /* 查询数据 */
-        $field = 'id,nick_name,sex,description,upfile_head,province,city,upfile_head_auth,upfile_head_auth_type,IM_username,like_count,like_now_count,like_consume_count,attention_count,fans_count,0 as is_be_shielded';
+        $field = 'id,nick_name,sex,comment_notify,get_gold_notify,trace_notify,letter_notify,top_times,top_best,description,upfile_head,province,city,upfile_head_auth,upfile_head_auth_type,IM_username,like_count,like_now_count,like_consume_count,attention_count,fans_count,0 as is_be_shielded';
         $where['id'] = array('EQ', $get_user_id);
         $where['status'] = array('EQ', 1);
         $where['display'] = array('EQ', 1);

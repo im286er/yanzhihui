@@ -23,9 +23,21 @@ UserModel--do_edit_chat_level()
 
 我的去向-新增
 UserModel--do_my_went()
+UserModel--do_info()---450
 UserController--my_went()
 
+添加上榜记录、获取我的上榜记录--新增
+TopicLogModel
+TopicLogController
 
+
+话题列表、话题详情--添加返回上榜次数、最好名次、聊天颜币数--修改
+TopicModel-540
+TopicModel-60
+
+
+添加用户信息返回字段--修改
+Api/Common/function.php---get_user_info()
 
 
 

@@ -1,657 +1,1978 @@
-[ 2015-12-14T00:45:00+08:00 ] ::1 /yanzhihui/?m=api&c=topic&a=article&top_id=19031&user_id=3185
+[ 2015-12-14T14:58:03+08:00 ] ::1 /yanzhihui/?m=api&c=topic&a=index_rank
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000667s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000663s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001347s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002190s ]
-SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0038s ]
-SQL: SELECT topic.upfile,topic.content,topic.province,topic.city,topic.longitude,topic.latitude,topic.comment_count,topic.create_time,user.id as user_id,user.nick_name,user.sex,user.upfile_head as user_upfile_head,0 as is_be_shielded FROM xian_topic topic INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic.id = '' AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 LIMIT 1   [ RunTime:0.0505s ]
-NOTIC: [2] unlink(./Logs/Runtime/Temp/d8d53facdf033ac4014daf12140bb05c.php) [<a href='function.unlink'>function.unlink</a>]: No such file or directory D:\software\wamp\www\yanzhihui\Public\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0100s ]
+SQL: SHOW COLUMNS FROM `xian_topic_like` [ RunTime:0.0030s ]
+SQL: SELECT topic.user_id,count(*) as like_count,user.nick_name,user.sex,user.upfile_head as user_upfile_head,user.province,user.city,0 as attention_relation FROM xian_topic_like topic_like INNER JOIN xian_topic topic on topic_like.topic_id = topic.id INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 GROUP BY user_id ORDER BY like_count desc LIMIT 20   [ RunTime:6.9704s ]
+SQL: SELECT id as topic_id,upfile as upfile_topic,`user_id` FROM `xian_topic` WHERE `user_id` IN ('65','566','296','86','80','2785','2809','63','2201','3314','1561','317','2470','466','31','638','165','3013','2799','110') AND `status` = 1 AND `display` = 1 ORDER BY topic_id desc  [ RunTime:0.0590s ]
 
-[ 2015-12-14T00:45:15+08:00 ] ::1 /yanzhihui/?m=api&c=topic&a=article&top_id=19031&user_id=3185
+[ 2015-12-14T14:58:37+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000521s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000537s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001163s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001883s ]
-SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0033s ]
-SQL: SELECT topic.upfile,topic.content,topic.province,topic.city,topic.longitude,topic.latitude,topic.comment_count,topic.create_time,user.id as user_id,user.nick_name,user.sex,user.upfile_head as user_upfile_head,0 as is_be_shielded FROM xian_topic topic INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic.id = '' AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 LIMIT 1   [ RunTime:0.0006s ]
-NOTIC: [2] unlink(./Logs/Runtime/Temp/d8d53facdf033ac4014daf12140bb05c.php) [<a href='function.unlink'>function.unlink</a>]: No such file or directory D:\software\wamp\www\yanzhihui\Public\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
 
-[ 2015-12-14T00:48:29+08:00 ] ::1 /yanzhihui/?m=api&c=topic&a=article&top_id=19031&user_id=3185
+[ 2015-12-14T14:58:58+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000898s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000909s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002088s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.003245s ]
-SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0036s ]
-SQL: SELECT topic.upfile,topic.content,topic.province,topic.city,topic.longitude,topic.latitude,topic.comment_count,topic.create_time,user.id as user_id,user.nick_name,user.sex,user.upfile_head as user_upfile_head,0 as is_be_shielded FROM xian_topic topic INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic.id = '' AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 LIMIT 1   [ RunTime:0.0004s ]
-NOTIC: [2] unlink(./Logs/Runtime/Temp/d8d53facdf033ac4014daf12140bb05c.php) [<a href='function.unlink'>function.unlink</a>]: No such file or directory D:\software\wamp\www\yanzhihui\Public\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+ERR: Think\Model:do_add方法不存在！
 
-[ 2015-12-14T00:48:38+08:00 ] ::1 /yanzhihui/?m=api&c=topic&a=article&top_id=19031&user_id=3185
+[ 2015-12-14T14:59:07+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000686s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000655s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001436s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002297s ]
-SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0033s ]
-SQL: SELECT topic.upfile,topic.content,topic.province,topic.city,topic.longitude,topic.latitude,topic.comment_count,topic.create_time,user.id as user_id,user.nick_name,user.sex,user.upfile_head as user_upfile_head,0 as is_be_shielded FROM xian_topic topic INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic.id = '' AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 LIMIT 1   [ RunTime:0.0004s ]
-NOTIC: [2] unlink(./Logs/Runtime/Temp/d8d53facdf033ac4014daf12140bb05c.php) [<a href='function.unlink'>function.unlink</a>]: No such file or directory D:\software\wamp\www\yanzhihui\Public\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+ERR: Think\Model:do_add方法不存在！
 
-[ 2015-12-14T00:49:53+08:00 ] ::1 /yanzhihui/?m=api&c=topic&a=article&top_id=19014&user_id=3433
+[ 2015-12-14T15:00:34+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000499s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000545s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001197s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001904s ]
-SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0039s ]
-SQL: SELECT topic.upfile,topic.content,topic.province,topic.city,topic.longitude,topic.latitude,topic.comment_count,topic.create_time,user.id as user_id,user.nick_name,user.sex,user.upfile_head as user_upfile_head,0 as is_be_shielded FROM xian_topic topic INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic.id = '' AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 LIMIT 1   [ RunTime:0.0004s ]
-NOTIC: [2] unlink(./Logs/Runtime/Temp/d8d53facdf033ac4014daf12140bb05c.php) [<a href='function.unlink'>function.unlink</a>]: No such file or directory D:\software\wamp\www\yanzhihui\Public\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+ERR: Think\Model:do_add方法不存在！
 
-[ 2015-12-14T00:49:55+08:00 ] ::1 /yanzhihui/?m=api&c=topic&a=article&top_id=19014&user_id=3433
+[ 2015-12-14T15:00:37+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000063s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000770s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000661s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001447s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002331s ]
-SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0042s ]
-SQL: SELECT topic.upfile,topic.content,topic.province,topic.city,topic.longitude,topic.latitude,topic.comment_count,topic.create_time,user.id as user_id,user.nick_name,user.sex,user.upfile_head as user_upfile_head,0 as is_be_shielded FROM xian_topic topic INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic.id = '' AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 LIMIT 1   [ RunTime:0.0004s ]
-NOTIC: [2] unlink(./Logs/Runtime/Temp/d8d53facdf033ac4014daf12140bb05c.php) [<a href='function.unlink'>function.unlink</a>]: No such file or directory D:\software\wamp\www\yanzhihui\Public\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+ERR: Think\Model:do_add方法不存在！
 
-[ 2015-12-14T00:50:18+08:00 ] ::1 /yanzhihui/?m=api&c=topic&a=article&top_id=19008&user_id=3842
+[ 2015-12-14T15:00:40+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000431s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000594s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001045s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001810s ]
-SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0041s ]
-SQL: SELECT topic.upfile,topic.content,topic.province,topic.city,topic.longitude,topic.latitude,topic.comment_count,topic.create_time,user.id as user_id,user.nick_name,user.sex,user.upfile_head as user_upfile_head,0 as is_be_shielded FROM xian_topic topic INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic.id = '' AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 LIMIT 1   [ RunTime:0.0005s ]
-NOTIC: [2] unlink(./Logs/Runtime/Temp/d8d53facdf033ac4014daf12140bb05c.php) [<a href='function.unlink'>function.unlink</a>]: No such file or directory D:\software\wamp\www\yanzhihui\Public\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+ERR: Think\Model:do_add方法不存在！
 
-[ 2015-12-14T00:50:38+08:00 ] ::1 /yanzhihui/?m=api&c=topic&a=article&top_id=18997&user_id=3842
+[ 2015-12-14T15:01:54+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000718s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000973s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001509s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002779s ]
-SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0034s ]
-SQL: SELECT topic.upfile,topic.content,topic.province,topic.city,topic.longitude,topic.latitude,topic.comment_count,topic.create_time,user.id as user_id,user.nick_name,user.sex,user.upfile_head as user_upfile_head,0 as is_be_shielded FROM xian_topic topic INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic.id = '' AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 LIMIT 1   [ RunTime:0.0004s ]
-NOTIC: [2] unlink(./Logs/Runtime/Temp/d8d53facdf033ac4014daf12140bb05c.php) [<a href='function.unlink'>function.unlink</a>]: No such file or directory D:\software\wamp\www\yanzhihui\Public\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+ERR: Think\Model:do_add方法不存在！
 
-[ 2015-12-14T00:50:42+08:00 ] ::1 /yanzhihui/?m=api&c=topic&a=article&top_id=18997&user_id=3774
+[ 2015-12-14T15:02:06+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000515s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000522s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001101s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001793s ]
-SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0041s ]
-SQL: SELECT topic.upfile,topic.content,topic.province,topic.city,topic.longitude,topic.latitude,topic.comment_count,topic.create_time,user.id as user_id,user.nick_name,user.sex,user.upfile_head as user_upfile_head,0 as is_be_shielded FROM xian_topic topic INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic.id = '' AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 LIMIT 1   [ RunTime:0.0004s ]
-NOTIC: [2] unlink(./Logs/Runtime/Temp/d8d53facdf033ac4014daf12140bb05c.php) [<a href='function.unlink'>function.unlink</a>]: No such file or directory D:\software\wamp\www\yanzhihui\Public\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 157 行.
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+ERR: Think\Model:do_add方法不存在！
 
-[ 2015-12-14T01:05:29+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=edit_chat_level
+[ 2015-12-14T15:02:23+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000461s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000596s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001200s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001961s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0054s ]
-SQL: UPDATE `xian_user` SET `chat_level`='2' WHERE `id` = '1' [ RunTime:0.0014s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
 
-[ 2015-12-14T01:31:37+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=info
+[ 2015-12-14T15:02:53+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000521s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000805s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001824s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002951s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+
+[ 2015-12-14T15:03:03+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+ERR: SQLSTATE[HY000]: General error: 1366 Incorrect integer value: '' for column 'user_id' at row 1
+
+[ 2015-12-14T15:04:40+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=5
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','5','','1450076680') [ RunTime:0.0860s ]
+
+[ 2015-12-14T15:05:41+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log`  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:10:39+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log`  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:12:40+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log`  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:15:37+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+
+[ 2015-12-14T15:15:43+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log`  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:16:08+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log`  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:18:38+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log`  [ RunTime:0.0010s ]
+
+[ 2015-12-14T15:18:57+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `xian_topic_log`  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:20:44+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `xian_topic_log`  [ RunTime:0.0010s ]
+
+[ 2015-12-14T15:20:59+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log`  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:21:01+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `xian_topic_log`  [ RunTime:0.0010s ]
+
+[ 2015-12-14T15:21:13+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log`  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:22:05+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `xian_topic_log`  [ RunTime:0.0010s ]
+
+[ 2015-12-14T15:22:48+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log`  [ RunTime:0.0010s ]
+
+[ 2015-12-14T15:23:12+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `xian_topic_log`  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:23:22+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `xian_topic_log`  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:24:21+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `xian_topic_log`  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:24:34+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log`  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:25:48+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = ''  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:26:14+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:27:35+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+
+[ 2015-12-14T15:27:46+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=88
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+
+[ 2015-12-14T15:28:24+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=88
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+NOTIC: [8] Undefined variable: model D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 14 行.
+
+[ 2015-12-14T15:28:34+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=88
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: model D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 14 行.
+
+[ 2015-12-14T15:28:49+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined variable: model D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 14 行.
+
+[ 2015-12-14T15:29:33+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1  [ RunTime:0.0010s ]
+
+[ 2015-12-14T15:30:06+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:31:24+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined variable: result D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 19 行.
+
+[ 2015-12-14T15:31:32+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:33:13+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = ''  [ RunTime:0.0180s ]
+NOTIC: [8] Undefined offset: 0 D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 19 行.
+
+[ 2015-12-14T15:33:30+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1'  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:35:02+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:36:03+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','3','','1450078563') [ RunTime:0.0540s ]
+NOTIC: [2] Illegal string offset 'create_time' D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 35 行.
+
+[ 2015-12-14T15:36:45+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450078605') [ RunTime:0.1220s ]
+NOTIC: [2] Illegal string offset 'create_time' D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 35 行.
+
+[ 2015-12-14T15:37:02+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:37:33+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+
+[ 2015-12-14T15:37:42+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = 8 ORDER BY create_time desc  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined offset: 0 D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 20 行.
+
+[ 2015-12-14T15:38:09+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = 8 ORDER BY create_time desc  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined offset: 0 D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 20 行.
+
+[ 2015-12-14T15:45:09+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = 8 ORDER BY create_time desc  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined offset: 0 D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 21 行.
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450079108') [ RunTime:0.0800s ]
+
+[ 2015-12-14T15:45:14+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = 8 ORDER BY create_time desc  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined offset: 0 D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 21 行.
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450079114') [ RunTime:0.0690s ]
+
+[ 2015-12-14T15:45:43+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = 8 ORDER BY create_time desc  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined offset: 0 D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 21 行.
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450079143') [ RunTime:0.0780s ]
+
+[ 2015-12-14T15:46:14+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = 8 ORDER BY create_time desc  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined offset: 0 D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 21 行.
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450079174') [ RunTime:0.1340s ]
+NOTIC: [8] Undefined variable: hour D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 43 行.
+
+[ 2015-12-14T15:46:36+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = 8 ORDER BY create_time desc  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined offset: 0 D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 21 行.
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450079195') [ RunTime:0.1460s ]
+NOTIC: [8] Undefined variable: hour D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 43 行.
+
+[ 2015-12-14T15:47:05+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = 8 ORDER BY create_time desc  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined offset: 0 D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 21 行.
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450079225') [ RunTime:0.0750s ]
+NOTIC: [8] Undefined variable: hour D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 45 行.
+
+[ 2015-12-14T15:47:39+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = 8 ORDER BY create_time desc  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined offset: 0 D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 21 行.
+
+[ 2015-12-14T15:47:51+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:48:06+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:48:29+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined variable: result D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 44 行.
+
+[ 2015-12-14T15:49:08+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0010s ]
+
+[ 2015-12-14T15:49:35+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined variable: data D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 43 行.
+
+[ 2015-12-14T15:49:46+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined variable: data D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 43 行.
+
+[ 2015-12-14T15:49:59+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450079399') [ RunTime:0.1210s ]
+
+[ 2015-12-14T15:50:08+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined variable: data D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 43 行.
+
+[ 2015-12-14T15:51:25+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:51:50+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+
+[ 2015-12-14T15:52:04+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450079524') [ RunTime:0.1450s ]
+
+[ 2015-12-14T15:57:00+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+
+[ 2015-12-14T16:17:25+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450081045') [ RunTime:0.0650s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0100s ]
+
+[ 2015-12-14T16:21:01+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450081261') [ RunTime:0.1050s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0110s ]
+
+[ 2015-12-14T16:24:14+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450081453') [ RunTime:0.0830s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0080s ]
+
+[ 2015-12-14T16:24:16+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450081456') [ RunTime:0.0550s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0100s ]
+
+[ 2015-12-14T16:24:43+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450081483') [ RunTime:0.0720s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'yanzhihui.xian_xian_user' doesn't exist
+
+[ 2015-12-14T16:24:52+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0010s ]
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450081492') [ RunTime:0.0660s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0110s ]
+
+[ 2015-12-14T16:26:17+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450081577') [ RunTime:0.0890s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0060s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'EQ' in 'where clause'
+
+[ 2015-12-14T16:27:01+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450081617') [ RunTime:0.0940s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `xian_user`  [ RunTime:0.0840s ]
+
+[ 2015-12-14T16:27:36+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0010s ]
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450081653') [ RunTime:0.0550s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `xian_user`  [ RunTime:0.0720s ]
+
+[ 2015-12-14T16:28:58+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0010s ]
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450081734') [ RunTime:0.0580s ]
 SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0040s ]
-SQL: SELECT COUNT(*) AS tp_count FROM `xian_user` WHERE `id` = '' AND `auth_token` = '' AND `status` = 1 AND `display` = 1 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `xian_user`  [ RunTime:0.0400s ]
 
-[ 2015-12-14T01:32:02+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=info&get_user_id=1
+[ 2015-12-14T16:32:56+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001226s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000796s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001452s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002480s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0039s ]
-SQL: SELECT COUNT(*) AS tp_count FROM `xian_user` WHERE `id` = '' AND `auth_token` = '' AND `status` = 1 AND `display` = 1 LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450081976') [ RunTime:0.0730s ]
 
-[ 2015-12-14T01:51:44+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
+[ 2015-12-14T16:33:44+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000490s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000773s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001578s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002548s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0047s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0041s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content FROM xian_shop_user_went went WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0243s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0010s ]
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450082024') [ RunTime:0.1460s ]
 
-[ 2015-12-14T01:54:08+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
+[ 2015-12-14T16:34:23+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000760s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000781s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001627s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002634s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0043s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0035s ]
-ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'yanzhihui.shop' doesn't exist
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0010s ]
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450082062') [ RunTime:0.0740s ]
 
-[ 2015-12-14T01:54:20+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
+[ 2015-12-14T16:34:34+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000521s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000676s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001607s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002469s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0038s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0028s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0141s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.010000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+SQL: INSERT INTO `xian_topic_log` (`user_id`,`type`,`number`,`name`,`create_time`) VALUES ('1','1','7','','1450082074') [ RunTime:0.0690s ]
 
-[ 2015-12-14T01:55:33+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
+[ 2015-12-14T16:35:28+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000458s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000517s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001104s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001789s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0037s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0028s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0005s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
 
-[ 2015-12-14T01:56:39+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
+[ 2015-12-14T16:36:58+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000469s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000600s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001547s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002384s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0060s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0010s ]
+
+[ 2015-12-14T16:37:22+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+
+[ 2015-12-14T16:37:43+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+
+[ 2015-12-14T16:38:22+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+
+[ 2015-12-14T16:38:34+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0010s ]
+
+[ 2015-12-14T16:38:51+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: number D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 27 行.
+
+[ 2015-12-14T16:39:02+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0010s ]
+
+[ 2015-12-14T16:39:28+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: number D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 27 行.
+
+[ 2015-12-14T16:40:45+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+
+[ 2015-12-14T16:41:19+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = '1' AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: number D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 29 行.
+
+[ 2015-12-14T16:41:25+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: number D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 29 行.
+
+[ 2015-12-14T16:41:26+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: number D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 29 行.
+
+[ 2015-12-14T16:41:26+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: number D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 29 行.
+
+[ 2015-12-14T16:42:30+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: number D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 29 行.
+
+[ 2015-12-14T16:43:35+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: number D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 29 行.
+
+[ 2015-12-14T16:44:55+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: number D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 29 行.
+
+[ 2015-12-14T16:45:27+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: number D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 29 行.
+
+[ 2015-12-14T16:45:48+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: number D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 29 行.
+
+[ 2015-12-14T16:45:49+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: number D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 29 行.
+
+[ 2015-12-14T16:45:49+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: number D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 29 行.
+
+[ 2015-12-14T16:45:49+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: number D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 29 行.
+
+[ 2015-12-14T16:45:49+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: number D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 29 行.
+
+[ 2015-12-14T16:45:49+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: number D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 29 行.
+
+[ 2015-12-14T16:46:20+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2015-12-14T16:46:32+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: number D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 29 行.
+
+[ 2015-12-14T16:46:41+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2015-12-14T16:47:04+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2015-12-14T16:47:21+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2015-12-14T16:47:42+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2015-12-14T16:48:09+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2015-12-14T16:48:22+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2015-12-14T16:48:31+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2015-12-14T16:48:38+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2015-12-14T16:48:52+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2015-12-14T16:49:18+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2015-12-14T16:49:32+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0000s ]
+
+[ 2015-12-14T16:49:54+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2015-12-14T16:49:55+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1' LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2015-12-14T16:50:50+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0040s ]
+NOTIC: [8] Undefined variable: where_user_id D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 57 行.
+
+[ 2015-12-14T16:51:15+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0000s ]
+
+[ 2015-12-14T16:51:54+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0010s ]
+
+[ 2015-12-14T16:52:03+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
 SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0050s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0033s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title,s.upfile FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0010s ]
 
-[ 2015-12-14T01:57:16+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
+[ 2015-12-14T16:54:38+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000542s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000695s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001431s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002298s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
 SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0040s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0030s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0000s ]
+SQL: UPDATE `xian_user` SET `id`='1',`user_type`='0',`telephone`='13800138000',`password`='4297f44b13955235245b2497399d7a93',`open_id`='',`nick_name`='小颜官方账号',`sex`='2',`upfile_head`='20151113/564588dc1a17d.png',`province`='广东省',`city`='广州市',`area`='',`description`='小颜官方账号',`like_count`='337',`like_now_count`='337',`like_consume_count`='0',`topic_count`='5',`topic_like_count`='673',`topic_comment_count`='15',`attention_count`='0',`fans_count`='440',`upfile_head_auth`='20151113/56458b15b0149.png',`upfile_head_auth_type`='3',`client_system`='1',`IM_uuid`='b88700ba-5bbd-11e5-abc6-c71ea92b615d',`IM_username`='yanzhihui_1',`IM_password`='97378358',`push_id`='0617a89fd77',`auth_token`='aGVlaZqalm9vlg==',`status`='1',`create_time`='1442330610',`shop_user_went_read_time`='1448975788',`display`='1',`comment_notify`='1',`get_gold_notify`='0',`trace_notify`='1',`letter_notify`='0',`chat_level`='0',`top_times`='1',`top_best`=NULL WHERE `id` = '1' [ RunTime:0.0660s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0010s ]
 
-[ 2015-12-14T01:59:07+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
+[ 2015-12-14T16:57:11+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=7
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000454s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000570s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001186s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001919s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0049s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0031s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0006s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0010s ]
+SQL: UPDATE `xian_user` SET `id`='1',`user_type`='0',`telephone`='13800138000',`password`='4297f44b13955235245b2497399d7a93',`open_id`='',`nick_name`='小颜官方账号',`sex`='2',`upfile_head`='20151113/564588dc1a17d.png',`province`='广东省',`city`='广州市',`area`='',`description`='小颜官方账号',`like_count`='337',`like_now_count`='337',`like_consume_count`='0',`topic_count`='5',`topic_like_count`='673',`topic_comment_count`='15',`attention_count`='0',`fans_count`='440',`upfile_head_auth`='20151113/56458b15b0149.png',`upfile_head_auth_type`='3',`client_system`='1',`IM_uuid`='b88700ba-5bbd-11e5-abc6-c71ea92b615d',`IM_username`='yanzhihui_1',`IM_password`='97378358',`push_id`='0617a89fd77',`auth_token`='aGVlaZqalm9vlg==',`status`='1',`create_time`='1442330610',`shop_user_went_read_time`='1448975788',`display`='1',`comment_notify`='1',`get_gold_notify`='0',`trace_notify`='1',`letter_notify`='0',`chat_level`='0',`top_times`='2',`top_best`='7' WHERE `id` = '1' [ RunTime:0.0870s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0000s ]
 
-[ 2015-12-14T02:01:11+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=search_nickname
+[ 2015-12-14T16:57:19+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=5
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000486s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000603s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001261s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002030s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0450s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0010s ]
+SQL: UPDATE `xian_user` SET `id`='1',`user_type`='0',`telephone`='13800138000',`password`='4297f44b13955235245b2497399d7a93',`open_id`='',`nick_name`='小颜官方账号',`sex`='2',`upfile_head`='20151113/564588dc1a17d.png',`province`='广东省',`city`='广州市',`area`='',`description`='小颜官方账号',`like_count`='337',`like_now_count`='337',`like_consume_count`='0',`topic_count`='5',`topic_like_count`='673',`topic_comment_count`='15',`attention_count`='0',`fans_count`='440',`upfile_head_auth`='20151113/56458b15b0149.png',`upfile_head_auth_type`='3',`client_system`='1',`IM_uuid`='b88700ba-5bbd-11e5-abc6-c71ea92b615d',`IM_username`='yanzhihui_1',`IM_password`='97378358',`push_id`='0617a89fd77',`auth_token`='aGVlaZqalm9vlg==',`status`='1',`create_time`='1442330610',`shop_user_went_read_time`='1448975788',`display`='1',`comment_notify`='1',`get_gold_notify`='0',`trace_notify`='1',`letter_notify`='0',`chat_level`='0',`top_times`='3',`top_best`='7' WHERE `id` = '1' [ RunTime:0.1650s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0010s ]
 
-[ 2015-12-14T02:01:42+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=search_nickname&keywords_nickname=
+[ 2015-12-14T16:57:25+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=9
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000445s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000561s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001195s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001920s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0000s ]
+SQL: UPDATE `xian_user` SET `id`='1',`user_type`='0',`telephone`='13800138000',`password`='4297f44b13955235245b2497399d7a93',`open_id`='',`nick_name`='小颜官方账号',`sex`='2',`upfile_head`='20151113/564588dc1a17d.png',`province`='广东省',`city`='广州市',`area`='',`description`='小颜官方账号',`like_count`='337',`like_now_count`='337',`like_consume_count`='0',`topic_count`='5',`topic_like_count`='673',`topic_comment_count`='15',`attention_count`='0',`fans_count`='440',`upfile_head_auth`='20151113/56458b15b0149.png',`upfile_head_auth_type`='3',`client_system`='1',`IM_uuid`='b88700ba-5bbd-11e5-abc6-c71ea92b615d',`IM_username`='yanzhihui_1',`IM_password`='97378358',`push_id`='0617a89fd77',`auth_token`='aGVlaZqalm9vlg==',`status`='1',`create_time`='1442330610',`shop_user_went_read_time`='1448975788',`display`='1',`comment_notify`='1',`get_gold_notify`='0',`trace_notify`='1',`letter_notify`='0',`chat_level`='0',`top_times`='4',`top_best`='7' WHERE `id` = '1' [ RunTime:0.0900s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0010s ]
 
-[ 2015-12-14T02:03:52+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went
+[ 2015-12-14T16:58:30+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=9
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000529s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000618s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001384s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002187s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
 SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0040s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0034s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '' ORDER BY went.create_time desc  [ RunTime:0.0150s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0000s ]
+SQL: UPDATE `xian_user` SET `id`='1',`user_type`='0',`telephone`='13800138000',`password`='4297f44b13955235245b2497399d7a93',`open_id`='',`nick_name`='小颜官方账号',`sex`='2',`upfile_head`='20151113/564588dc1a17d.png',`province`='广东省',`city`='广州市',`area`='',`description`='小颜官方账号',`like_count`='337',`like_now_count`='337',`like_consume_count`='0',`topic_count`='5',`topic_like_count`='673',`topic_comment_count`='15',`attention_count`='0',`fans_count`='440',`upfile_head_auth`='20151113/56458b15b0149.png',`upfile_head_auth_type`='3',`client_system`='1',`IM_uuid`='b88700ba-5bbd-11e5-abc6-c71ea92b615d',`IM_username`='yanzhihui_1',`IM_password`='97378358',`push_id`='0617a89fd77',`auth_token`='aGVlaZqalm9vlg==',`status`='1',`create_time`='1442330610',`shop_user_went_read_time`='1448975788',`display`='1',`comment_notify`='1',`get_gold_notify`='0',`trace_notify`='1',`letter_notify`='0',`chat_level`='0',`top_times`='5',`top_best`='7' WHERE `id` = '1' [ RunTime:0.0740s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0010s ]
 
-[ 2015-12-14T02:04:13+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&userid=2
+[ 2015-12-14T16:59:12+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=9
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000458s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000568s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001186s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001922s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0038s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0028s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '' ORDER BY went.create_time desc  [ RunTime:0.0003s ]
-
-[ 2015-12-14T02:04:20+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000877s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000620s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001303s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002125s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0044s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0029s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0006s ]
-
-[ 2015-12-14T02:10:27+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000897s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000883s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001816s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002912s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0041s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0031s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0006s ]
-NOTIC: [8] Undefined index: img D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 77 行.
-
-[ 2015-12-14T02:10:59+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000480s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000579s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001213s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001972s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0039s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0037s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0005s ]
-NOTIC: [8] Undefined index: img D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 77 行.
-
-[ 2015-12-14T02:11:29+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000429s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000509s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001058s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001738s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time`,`number` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
 SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0040s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0040s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0006s ]
-NOTIC: [8] Undefined index: img D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 78 行.
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0000s ]
 
-[ 2015-12-14T02:11:43+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
+[ 2015-12-14T17:01:11+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=9
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000529s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000507s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001271s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001947s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0043s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0036s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0005s ]
-NOTIC: [8] Undefined index: img D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 78 行.
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0000s ]
+SQL: UPDATE `xian_user` SET `id`='1',`user_type`='0',`telephone`='13800138000',`password`='4297f44b13955235245b2497399d7a93',`open_id`='',`nick_name`='小颜官方账号',`sex`='2',`upfile_head`='20151113/564588dc1a17d.png',`province`='广东省',`city`='广州市',`area`='',`description`='小颜官方账号',`like_count`='337',`like_now_count`='337',`like_consume_count`='0',`topic_count`='5',`topic_like_count`='673',`topic_comment_count`='15',`attention_count`='0',`fans_count`='440',`upfile_head_auth`='20151113/56458b15b0149.png',`upfile_head_auth_type`='3',`client_system`='1',`IM_uuid`='b88700ba-5bbd-11e5-abc6-c71ea92b615d',`IM_username`='yanzhihui_1',`IM_password`='97378358',`push_id`='0617a89fd77',`auth_token`='aGVlaZqalm9vlg==',`status`='1',`create_time`='1442330610',`shop_user_went_read_time`='1448975788',`display`='1',`comment_notify`='1',`get_gold_notify`='0',`trace_notify`='1',`letter_notify`='0',`chat_level`='0',`top_times`='6',`top_best`='9' WHERE `id` = '1' [ RunTime:0.1270s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0010s ]
 
-[ 2015-12-14T02:11:52+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
+[ 2015-12-14T17:01:19+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=6
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000439s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000688s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001512s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002459s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0052s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0034s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0007s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0000s ]
+SQL: UPDATE `xian_user` SET `id`='1',`user_type`='0',`telephone`='13800138000',`password`='4297f44b13955235245b2497399d7a93',`open_id`='',`nick_name`='小颜官方账号',`sex`='2',`upfile_head`='20151113/564588dc1a17d.png',`province`='广东省',`city`='广州市',`area`='',`description`='小颜官方账号',`like_count`='337',`like_now_count`='337',`like_consume_count`='0',`topic_count`='5',`topic_like_count`='673',`topic_comment_count`='15',`attention_count`='0',`fans_count`='440',`upfile_head_auth`='20151113/56458b15b0149.png',`upfile_head_auth_type`='3',`client_system`='1',`IM_uuid`='b88700ba-5bbd-11e5-abc6-c71ea92b615d',`IM_username`='yanzhihui_1',`IM_password`='97378358',`push_id`='0617a89fd77',`auth_token`='aGVlaZqalm9vlg==',`status`='1',`create_time`='1442330610',`shop_user_went_read_time`='1448975788',`display`='1',`comment_notify`='1',`get_gold_notify`='0',`trace_notify`='1',`letter_notify`='0',`chat_level`='0',`top_times`='7',`top_best`='9' WHERE `id` = '1' [ RunTime:0.1570s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0010s ]
 
-[ 2015-12-14T02:13:44+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
+[ 2015-12-14T17:01:28+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=11
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000468s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000672s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001267s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002112s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0042s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0028s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0005s ]
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
-NOTIC: [8] Undefined variable: data D:\software\wamp\www\yanzhihui\Application\Api\Model\UserModel.class.php 第 81 行.
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0000s ]
+SQL: UPDATE `xian_user` SET `id`='1',`user_type`='0',`telephone`='13800138000',`password`='4297f44b13955235245b2497399d7a93',`open_id`='',`nick_name`='小颜官方账号',`sex`='2',`upfile_head`='20151113/564588dc1a17d.png',`province`='广东省',`city`='广州市',`area`='',`description`='小颜官方账号',`like_count`='337',`like_now_count`='337',`like_consume_count`='0',`topic_count`='5',`topic_like_count`='673',`topic_comment_count`='15',`attention_count`='0',`fans_count`='440',`upfile_head_auth`='20151113/56458b15b0149.png',`upfile_head_auth_type`='3',`client_system`='1',`IM_uuid`='b88700ba-5bbd-11e5-abc6-c71ea92b615d',`IM_username`='yanzhihui_1',`IM_password`='97378358',`push_id`='0617a89fd77',`auth_token`='aGVlaZqalm9vlg==',`status`='1',`create_time`='1442330610',`shop_user_went_read_time`='1448975788',`display`='1',`comment_notify`='1',`get_gold_notify`='0',`trace_notify`='1',`letter_notify`='0',`chat_level`='0',`top_times`='8',`top_best`='11' WHERE `id` = '1' [ RunTime:0.1200s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0010s ]
 
-[ 2015-12-14T02:14:37+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
+[ 2015-12-14T17:01:32+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=add&user_id=1&type=1&number=11
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000522s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000814s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001352s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002390s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0037s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0035s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0006s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT `create_time` FROM `xian_topic_log` WHERE `user_id` = 1 AND `type` = '1' ORDER BY create_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0000s ]
+SQL: UPDATE `xian_user` SET `id`='1',`user_type`='0',`telephone`='13800138000',`password`='4297f44b13955235245b2497399d7a93',`open_id`='',`nick_name`='小颜官方账号',`sex`='2',`upfile_head`='20151113/564588dc1a17d.png',`province`='广东省',`city`='广州市',`area`='',`description`='小颜官方账号',`like_count`='337',`like_now_count`='337',`like_consume_count`='0',`topic_count`='5',`topic_like_count`='673',`topic_comment_count`='15',`attention_count`='0',`fans_count`='440',`upfile_head_auth`='20151113/56458b15b0149.png',`upfile_head_auth_type`='3',`client_system`='1',`IM_uuid`='b88700ba-5bbd-11e5-abc6-c71ea92b615d',`IM_username`='yanzhihui_1',`IM_password`='97378358',`push_id`='0617a89fd77',`auth_token`='aGVlaZqalm9vlg==',`status`='1',`create_time`='1442330610',`shop_user_went_read_time`='1448975788',`display`='1',`comment_notify`='1',`get_gold_notify`='0',`trace_notify`='1',`letter_notify`='0',`chat_level`='0',`top_times`='9',`top_best`='11' WHERE `id` = '1' [ RunTime:0.0720s ]
+SQL: SELECT * FROM `xian_user` WHERE `id` = '1'  [ RunTime:0.0010s ]
 
-[ 2015-12-14T02:14:59+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
+[ 2015-12-14T17:26:19+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=list
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000501s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000584s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001496s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002262s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0036s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0027s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0006s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
 
-[ 2015-12-14T02:15:09+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
+[ 2015-12-14T17:27:23+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=my_list
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000611s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000493s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001034s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001694s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0039s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0050s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0007s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log` WHERE `user_id` = ''  [ RunTime:0.0010s ]
 
-[ 2015-12-14T02:15:46+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
+[ 2015-12-14T17:27:35+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=my_list?user_id=1
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000459s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000495s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001064s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001720s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0036s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0028s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0006s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
 
-[ 2015-12-14T02:15:55+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
+[ 2015-12-14T17:27:44+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=my_list&user_id=1
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000536s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000648s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001463s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002280s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0044s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0029s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0006s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log` WHERE `user_id` = '1'  [ RunTime:0.0000s ]
 
-[ 2015-12-14T02:16:01+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
+[ 2015-12-14T17:30:01+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=my_list&user_id=1
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000488s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000560s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001176s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001896s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0037s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0028s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0005s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log` WHERE `user_id` = '1'  [ RunTime:0.0000s ]
 
-[ 2015-12-14T02:17:42+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
+[ 2015-12-14T17:32:23+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=my_list&user_id=1
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000720s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000854s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001796s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002910s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0039s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0038s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0008s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log` WHERE `user_id` = '1'  [ RunTime:0.0000s ]
 
-[ 2015-12-14T02:18:11+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
+[ 2015-12-14T17:35:20+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=my_list&user_id=1
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000548s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000621s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001310s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002097s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0036s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0027s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0005s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log` WHERE `user_id` = '1'  [ RunTime:0.0000s ]
 
-[ 2015-12-14T02:18:43+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
+[ 2015-12-14T17:35:44+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=my_list&user_id=1
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000609s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000626s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001270s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002074s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0037s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0047s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0005s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log` WHERE `user_id` = '1'  [ RunTime:0.0000s ]
 
-[ 2015-12-14T02:20:25+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=3705
+[ 2015-12-14T17:36:53+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=my_list&user_id=1
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000558s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000683s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001251s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002119s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0036s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0050s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '3705' ORDER BY went.create_time desc  [ RunTime:0.0354s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log` WHERE `user_id` = '1'  [ RunTime:0.0010s ]
 
-[ 2015-12-14T02:20:45+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2293
+[ 2015-12-14T17:37:36+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=my_list&user_id=1
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000893s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000616s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001238s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002037s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0037s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0028s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2293' ORDER BY went.create_time desc  [ RunTime:0.0314s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `xian_topic_log` WHERE `user_id` = '1'  [ RunTime:0.0010s ]
+NOTIC: [2] Illegal string offset 'create_time' D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 85 行.
+NOTIC: [2] Illegal string offset 'create_time' D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 85 行.
+NOTIC: [2] Illegal string offset 'create_time' D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 85 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 85 行.
+NOTIC: [2] Illegal string offset 'create_time' D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 85 行.
+NOTIC: [2] Illegal string offset 'create_time' D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 85 行.
+NOTIC: [2] Illegal string offset 'create_time' D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 85 行.
+NOTIC: [2] Illegal string offset 'create_time' D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 85 行.
+NOTIC: [2] Illegal string offset 'create_time' D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 85 行.
+NOTIC: [2] Illegal string offset 'create_time' D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 85 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 85 行.
+NOTIC: [2] Illegal string offset 'create_time' D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 85 行.
+NOTIC: [2] Illegal string offset 'create_time' D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 85 行.
+NOTIC: [2] Illegal string offset 'create_time' D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 85 行.
+NOTIC: [2] Illegal string offset 'create_time' D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 85 行.
+NOTIC: [2] Illegal string offset 'create_time' D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 85 行.
+NOTIC: [2] Illegal string offset 'create_time' D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 85 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 85 行.
+NOTIC: [2] Illegal string offset 'create_time' D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 85 行.
+NOTIC: [2] Illegal string offset 'create_time' D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 85 行.
+NOTIC: [2] Illegal string offset 'create_time' D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicLogModel.class.php 第 85 行.
 
-[ 2015-12-14T02:21:21+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=1777
+[ 2015-12-14T17:38:08+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=my_list&user_id=1
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000465s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000515s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001049s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001737s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0038s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0030s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '1777' ORDER BY went.create_time desc  [ RunTime:0.0287s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log` WHERE `user_id` = '1'  [ RunTime:0.0000s ]
 
-[ 2015-12-14T02:21:58+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=745
+[ 2015-12-14T17:38:26+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=my_list&user_id=1
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000464s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000498s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001072s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001731s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0034s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0026s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '745' ORDER BY went.create_time desc  [ RunTime:0.0003s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log` WHERE `user_id` = '1'  [ RunTime:0.0000s ]
 
-[ 2015-12-14T02:22:02+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=444
+[ 2015-12-14T17:39:00+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=my_list&user_id=1
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000778s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000906s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001889s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.003085s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0037s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0028s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '444' ORDER BY went.create_time desc  [ RunTime:0.0004s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log` WHERE `user_id` = '1'  [ RunTime:0.0000s ]
 
-[ 2015-12-14T02:22:05+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=333
+[ 2015-12-14T17:39:14+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=my_list&user_id=1
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000730s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000868s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001213s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002277s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0036s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0036s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '333' ORDER BY went.create_time desc  [ RunTime:0.0003s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `xian_topic_log` WHERE `user_id` = '1'  [ RunTime:0.0000s ]
 
-[ 2015-12-14T02:22:09+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=221
+[ 2015-12-14T17:40:55+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=my_list&user_id=1
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000543s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000485s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001027s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001676s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0034s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0027s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '221' ORDER BY went.create_time desc  [ RunTime:0.0003s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
 
-[ 2015-12-14T02:24:31+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=2
+[ 2015-12-14T17:41:13+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=my_list&user_id=1
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000557s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000620s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001363s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002147s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0037s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0030s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '2' ORDER BY went.create_time desc  [ RunTime:0.0008s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log` WHERE `user_id` = '1'  [ RunTime:0.0000s ]
 
-[ 2015-12-14T02:24:34+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=12
+[ 2015-12-14T17:41:18+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=my_list&user_id=1
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000396s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000451s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001003s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001616s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0036s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0029s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '12' ORDER BY went.create_time desc  [ RunTime:0.0005s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
 
-[ 2015-12-14T02:24:55+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=88
+[ 2015-12-14T17:43:12+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=my_list&user_id=1
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000474s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000832s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001355s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002485s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0051s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0029s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '88' ORDER BY went.create_time desc  [ RunTime:0.0003s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `xian_topic_log` WHERE `user_id` = '1'  [ RunTime:0.0000s ]
 
-[ 2015-12-14T02:24:58+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=66
+[ 2015-12-14T17:44:01+08:00 ] ::1 /yanzhihui/?m=api&c=topic_log&a=my_list&user_id=1
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000691s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001271s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001442s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002962s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0043s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0035s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '66' ORDER BY went.create_time desc  [ RunTime:0.0005s ]
-
-[ 2015-12-14T02:25:02+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=55
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000665s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000656s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001357s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002218s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0044s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0027s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '55' ORDER BY went.create_time desc  [ RunTime:0.0003s ]
-
-[ 2015-12-14T02:25:07+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=40
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000900s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000932s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001903s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.003135s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0038s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0028s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '40' ORDER BY went.create_time desc  [ RunTime:0.0003s ]
-
-[ 2015-12-14T02:25:10+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&user_id=33
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000548s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001025s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001065s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002386s ]
-SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0044s ]
-SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0028s ]
-SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.user_id  WHERE `user_id` = '33' ORDER BY went.create_time desc  [ RunTime:0.0005s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `xian_topic_log` WHERE `user_id` = '1'  [ RunTime:0.0000s ]
 
