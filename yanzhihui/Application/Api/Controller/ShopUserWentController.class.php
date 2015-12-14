@@ -44,6 +44,7 @@ class ShopUserWentController extends BaseController {
                 $where_attention['user.push_id'] = array('NEQ', '');
                 $where_attention['user.status'] = array('EQ', 1);
                 $where_attention['user.display'] = array('EQ', 1);
+                $where_attention['user.trace_notify'] = array('EQ', 1);
                 $attention_user_id = M('UserAttention')
                     ->alias('user_attention')
                     ->field('user.push_id')

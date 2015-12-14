@@ -621,7 +621,6 @@ class TopicModel extends CommonModel {
                 $data['is_be_shielded'] = $count_is_be_shielded;
             }
         }
-
         $return_data['data'] = arr_content_replace($data);
         /* 读取json */
         return $return_data;

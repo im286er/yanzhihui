@@ -53,6 +53,12 @@ class TopicController extends BaseController {
         $this->ajaxReturn(array('RESPONSE_STATUS' => 500, 'Tips' => L('YZ_return_failure')));
     }
 
+    public function test(){
+        $User = M("User");
+        $list = $User->select();
+        var_dump($list);
+    }
+
     /**
      * 发布话题 add
      */
