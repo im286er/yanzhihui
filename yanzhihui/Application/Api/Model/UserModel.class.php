@@ -65,13 +65,13 @@ class UserModel extends CommonModel {
         /* 定义变量 */
         $user_id = I('get.user_id');
         $where['user_id'] = array('EQ', $user_id);
-        $field = 'went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img';
+        $field = 'went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img,went.create_time as went_time';
         $order = 'went.create_time desc';
         $list = M('ShopUserWent')
             ->alias('went')
             ->field($field)
-            ->where($where)
-            ->join('LEFT JOIN xian_shop s on s.id = went.user_id')
+            ->where($where) 
+            ->join('LEFT JOIN xian_shop s on s.id = went.shop_id')
             ->order($order)
             ->select();
         $_list = array();
@@ -80,11 +80,14 @@ class UserModel extends CommonModel {
                 if($v['img']){
                     $v['img'] = C('APP_URL') . '/Uploads/Images/Topic/' . $v['img'];
                 }
+                /*if($v['went_time']){
+                    $v['went_time'] = date("Y-m-d H:i:s",$v['went_time']);
+                }*/
                 $_list[] = $v;
             }
         }
         /* 读取json */
-        $_list = empty($_list) ? array() : $list;
+        $_list = empty($_list) ? array() : $_list;
         $jsonInfo['list'] = arr_content_replace($_list);
         return $jsonInfo;
     }
@@ -100,9 +103,18 @@ class UserModel extends CommonModel {
         /* 定义变量 */
         $data = array();
         $user_id = I('post.user_id');
-        $_value = I('post.value');
-        $value=intval($_value);
-        $data['chat_level'] = $value;
+        $level = I('post.level');
+        $data['chat_level'] = $level;
+        $arr = M('Level')->select();
+        if($level == 0){
+            $data['chat_value'] = 0;
+        }if($level == 1){
+            $data['chat_value'] = $arr[0]['level_a'];
+        }else if($level == 2){
+            $data['chat_value'] = $arr[0]['level_b'];
+        }else if($level == 3){
+            $data['chat_value'] = $arr[0]['level_c'];
+        }
         $where['id'] = array('EQ', $user_id);
         $result = $this->where($where)->save($data);
         return $result;
@@ -447,7 +459,7 @@ class UserModel extends CommonModel {
         $get_user_id = I('get.get_user_id');
 
         /* 查询数据 */
-        $field = 'id,nick_name,sex,comment_notify,get_gold_notify,trace_notify,letter_notify,top_times,top_best,description,upfile_head,province,city,upfile_head_auth,upfile_head_auth_type,IM_username,like_count,like_now_count,like_consume_count,attention_count,fans_count,0 as is_be_shielded';
+        $field = 'id,nick_name,sex,chat_level,chat_value,comment_notify,get_gold_notify,trace_notify,letter_notify,top_times,top_best,description,upfile_head,province,city,upfile_head_auth,upfile_head_auth_type,IM_username,like_count,like_now_count,like_consume_count,attention_count,fans_count,0 as is_be_shielded';
         $where['id'] = array('EQ', $get_user_id);
         $where['status'] = array('EQ', 1);
         $where['display'] = array('EQ', 1);
