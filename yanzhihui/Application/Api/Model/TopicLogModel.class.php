@@ -11,10 +11,10 @@ class TopicLogModel extends CommonModel {
         $bool = false;      // 默认不能插入
         /* 接收参数 */
         $model = M('TopicLog');
-        $user_id = I('get.user_id');
-        $type = I('get.type');
-        $number = I('get.number');
-        $name = I('get.name');
+        $user_id = I('post.user_id');
+        $type = I('post.type');
+        $number = I('post.number');
+        $name = I('post.name');
         $user_id = empty($user_id) ? 0 : $user_id;
 
         /* 查询条件 */
@@ -58,7 +58,7 @@ class TopicLogModel extends CommonModel {
             /* 上榜次数+1 */
             $info['top_times'] = $info['top_times']+1;
             /* 如果这次排名比原最好考前，修改最好名次 */
-            if($info['top_best'] > $number){
+            if(intval($info['top_best']) == 0 || $info['top_best'] > $number){
                 $info['top_best'] = $number;
             }
             $qq = M('User')->where($criteria)->save($info);
