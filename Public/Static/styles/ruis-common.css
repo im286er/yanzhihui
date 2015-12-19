@@ -1,0 +1,24 @@
+﻿@charset "utf-8";
+/* reset */
+body,h1,h2,h3,h4,blockquote,p,dl,dt,dd,ul,ol,li,th,td,form,fieldset,legend,button,input,textarea{margin:0;padding:0;}
+body,button,input,select,textarea{font:12px/1.5 \5b8b\4f53,arial,sans-serif;}
+body{text-align:left;color:#787b7f;background:#fff;}
+button,input,select,textarea,h1,h2,h3,h4{font-size:100%;}
+input,select,textarea{resize:none;outline:none}
+em,i{font-style:normal}ol,ul{list-style:none;}
+img,fieldset{border:0;vertical-align:middle;}
+table{ table-layout:fixed;}
+table th,table td{ word-wrap:break-word; word-break:break-all;}
+.cf:after{content:"\20";clear:both;height:0;display:block;overflow:hidden;}.cf{*zoom:1;}
+.clear{font-size:0;line-height:0;height:0;overflow:hidden;clear:both;visibility:hidden;}
+.fl{float:left;display:inline;}.fr{float:right;display:inline;}
+a{color:#787b7f;text-decoration:none;}
+a:hover{color:#787b7f;}
+.f14{font-size:14px;}
+.tac{text-align:center;}
+.tal{text-align:left;}
+.yh{font-family:"微软雅黑";}
+
+/* d404 */
+.d404{ width:300px; margin:-150px 0 0 -150px; position:absolute; top:50%; left:50%; text-align:center;}
+.d404Tit{ height:90px; line-height:90px; font-size:28px; color:#f7a21d;}

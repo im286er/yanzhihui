@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>{$Think.lang.TPL_welcome}</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="__PUBLIC____MODULE__/styles/ruis-common.css">
+</head>
+<body>
+<div class="dMain">
+    <div class="ifrTitle yh">
+        <div class="mark">
+            <eq name='ACTION_NAME' value='add'>添加<else/>修改</eq>优惠劵
+        </div>
+    </div>
+
+    <div class="dEdit">
+        <form id="formEdit" autocomplete="off">
+            <input name="id" type="hidden" value="{$vo.id}">
+            <ul>
+                <li class="liTit"><i class="cRed">*</i> 优惠劵名</li>
+                <li class="liCon"><input class="inputTxt w310 fl" name="title" type="text" value="{$vo.title}"></li>
+            </ul>
+            <ul>
+                <li class="liTit"><i class="cRed">*</i> 选择门店</li>
+                <li class="liCon">
+                    <select class="multiselectSingleFilter w320" name="shop_id" multiple="multiple">
+                        <volist name="vo.shop" id="shop">
+                            <option value="{$shop.id}" <eq name="vo.shop_id" value="$shop.id">selected</eq>>{$shop.title}</option>
+                        </volist>
+                    </select>
+                </li>
+            </ul>
+            <ul>
+                <li class="liTit"><i class="cRed">*</i> 优惠类型</li>
+                <li class="liCon radio">
+                    <dd><input name="coupon_type" type="radio" value="1" <neq name="vo.coupon_type" value="2">checked</neq>>免单</dd>
+                    <dd><input name="coupon_type" type="radio" value="2" <eq name="vo.coupon_type" value="2">checked</eq>>抵扣</dd>
+                </li>
+            </ul>
+            <ul id="coupon_type" <neq name="vo.coupon_type" value="2">style="display:none;"</neq>>
+                <li class="liTit"><i class="cRed">*</i> 抵扣价值</li>
+                <li class="liCon">
+                    <input class="inputTxt w310 fl" name="coupon_worth" type="text" value="{$vo.coupon_worth}">
+                    <span class="cGray ml10 fl">{$Think.lang.TS_enter_number}</span>
+                </li>
+            </ul>
+            <ul>
+                <li class="liTit"><i class="cRed">*</i> 消费颜币</li>
+                <li class="liCon">
+                    <input class="inputTxt w310 fl" name="like_consume_count" type="text" value="{$vo.like_consume_count}">
+                    <span class="cGray ml10 fl">{$Think.lang.TS_enter_number}</span>
+                </li>
+            </ul>
+            <ul>
+                <li class="liTit"><i class="cRed">*</i> 内 容</li>
+                <li class="liCon"><textarea name="content" class="areaA w450">{$vo.content}</textarea></li>
+            </ul>
+            <ul>
+                <li class="liSave">
+                    <eq name='ACTION_NAME' value='add'>
+                        <a href="{:U('insert')}" class="aButtonB w110 formSub">{$Think.lang.Tpl_btn_keep}</a>
+                        <else/>
+                        <a href="{:U('update')}" class="aButtonB w110 formSub">{$Think.lang.Tpl_btn_keep}</a>
+                    </eq>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="__PUBLIC__/Static/scripts/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC____MODULE__/scripts/ruis-common.js"></script>
+<script>
+    $("input[name='coupon_type']").click(function(){
+        if($(this).val() == 1){
+            $("#coupon_type").hide();
+        }else{
+            $("#coupon_type").show();
+        }
+    })
+</script>
+</body>
+</html>

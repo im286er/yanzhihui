@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>{$Think.lang.TPL_welcome}</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="__PUBLIC____MODULE__/styles/ruis-common.css">
+</head>
+<body>
+<div class="dMain">
+    <div class="ifrTitle yh">
+        <div class="mark">优惠劵管理</div>
+        <div class="subMark">
+            <a href="{:U('add')}" class="aButtonA w110 fl">添加优惠劵</a>
+        </div>
+    </div>
+
+    <div class="dSearch">
+        <form id="dSearch" autocomplete="off">
+            <ul>
+                <li class="liTit">优惠劵标题</li>
+                <li><input class="inputTxt w310" name="title" type="text" value="{$Think.get.title}"></li>
+                <li><a id="searchBtn" class="aButtonC w110 ml10 fl" href="javascript:void(0)">{$Think.lang.Tpl_btn_search}</a></li>
+            </ul>
+        </form>
+    </div>
+
+    <form id="form" method="post">
+        <input id="itemID" name="itemID" type="hidden">
+
+        <div class="dList">
+            <ul class="dListMark">
+                <li class="bgNone" data-width="5"></li>
+                <li class="tal" data-width="22" data-paddingL="1">优惠劵名</li>
+                <li class="tal" data-width="18" data-paddingL="1">门店</li>
+                <li data-width="6">类型</li>
+                <li data-width="6">抵扣价值</li>
+                <li>需要消费颜币</li>
+                <li data-width="6">状 态</li>
+                <li>时 间</li>
+                <li class="bgNone" data-width="14">操 作</li>
+            </ul>
+            <volist name="list" id="vo">
+                <ul>
+                    <li class="tal" data-width="3" data-paddingL="2"><input type="checkbox" name="singleID[]" value="{$vo.id}" class="checkbox"></li>
+                    <li class="tal" data-width="22" data-paddingL="1">{$vo.title}</li>
+                    <li class="tal" data-width="18" data-paddingL="1">{$vo.shop_title}</li>
+                    <li data-width="6"><eq name="vo.coupon_type" value="1"><i class="cRed">免单</i><else/>抵扣</eq></li>
+                    <li data-width="6"><eq name="vo.coupon_type" value="2"><i class="cRed">{$vo.coupon_worth}</i></eq></li>
+                    <li>{$vo.like_consume_count}</li>
+                    <li data-width="6"><eq name="vo.status" value="1"><strong class="cGreen">启动</strong><else/>未启动</eq></li>
+                    <li>{$vo.create_time|date='Y-m-d',###}</li>
+                    <li data-width="14">
+                        <if condition="view_auth_check(U('edit'))"><a class="aModify" href="{:U('edit')}"></a></if>
+                        <if condition="view_auth_check(U('delete'))"><a class="aDelete" href="{:U('delete')}"></a></if>
+                        <eq name="vo.status" value="1">
+                            <if condition="view_auth_check(U('statusDown'))"><a class="aStar" href="{:U('statusDown')}"></a></if>
+                            <else/>
+                            <if condition="view_auth_check(U('statusUp'))"><a class="aUnStar" href="{:U('statusUp')}"></a></if>
+                        </eq>
+                    </li>
+                </ul>
+            </volist>
+        </div>
+    </form>
+
+    <notempty name="list">
+        <div class="dPageBox">
+            <div class="dBatch fl">
+                <input id="ckAll_list" class="fl" type="checkbox">
+                <span class="aLinkAbox" style="display:none;">
+                    <if condition="view_auth_check(U('delete'))"><a id="batchDel" href="{:U('delete')}">删除</a></if>
+                    <if condition="view_auth_check(U('statusUp'))"><a id="batchStar" href="{:U('statusUp')}">启动</a></if>
+                    <if condition="view_auth_check(U('statusDown'))"><a id="batchUnStar" href="{:U('statusDown')}">不启动</a></if>
+                </span>
+            </div>
+            <div class="dPage fr">
+                <form id="formPage">
+                    {$page}
+                    <notempty name="page">
+                        <em>到第<input name="p" type="text">页</em>
+                        <a class="aSubmit" href="javascript:void(0)">{$Think.lang.TPL_btn_confirm}</a>
+                        <input name="title" type="hidden" value="{$Think.get.title}">
+                    </notempty>
+                </form>
+            </div>
+        </div>
+    </notempty>
+</div>
+
+<!-- JavaScript -->
+<script src="__PUBLIC__/Static/scripts/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC____MODULE__/scripts/ruis-common.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>{$Think.lang.TPL_welcome}</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="__PUBLIC____MODULE__/styles/ruis-common.css">
+</head>
+<body>
+<div class="dMain">
+    <div class="ifrTitle yh">
+        <div class="mark">颜图片管理</div>
+    </div>
+
+    <div class="dSearch">
+        <form id="dSearch" autocomplete="off">
+            <ul>
+                <li class="liTit">颜图片内容</li>
+                <li><input class="inputTxt w190" name="title" type="text" value="{$Think.get.title}"></li>
+                <li class="liTit">昵称</li>
+                <li><input class="inputTxt w190" name="nick_name" type="text" value="{$Think.get.nick_name}"></li>
+            </ul>
+            <ul>
+                <li class="liTit">开始时间</li>
+                <li><input id="startTime" class="inputTxt w190 WdatePicker" name="startTime" type="text" value="{$Think.get.startTime}"></li>
+                <li class="liTit">结束时间</li>
+                <li><input id="endTime" class="inputTxt w190 WdatePicker" name="endTime" type="text" value="{$Think.get.endTime}"></li>
+            </ul>
+            <ul class="operateBtnBg">
+                <li><a id="searchBtn" class="aButtonC w110 ml10 fl" href="javascript:void(0)">{$Think.lang.Tpl_btn_search}</a></li>
+            </ul>
+        </form>
+    </div>
+
+    <form id="form" method="post">
+        <input id="itemID" name="itemID" type="hidden">
+        <div class="dList">
+            <ul class="dListMark">
+                <li class="bgNone" data-width="5"></li>
+                <li class="tal" data-width="20" data-paddingL="1">内 容</li>
+                <li class="tal" data-width="18" data-paddingL="1">发布地区</li>
+                <li class="tal" data-width="12" data-paddingL="1">用户昵称</li>
+                <li data-width="6">总点赞数</li>
+                <li data-width="6">总评论数</li>
+                <li data-width="6">状 态</li>
+                <li>时 间</li>
+                <li class="bgNone" data-width="14">操 作</li>
+            </ul>
+            <div class="dSlide">
+                <volist name="list" id="vo">
+                    <ul>
+                        <li class="tal" data-width="3" data-paddingL="2"><input type="checkbox" name="singleID[]" value="{$vo.id}" class="checkbox"></li>
+                        <li class="tal" data-width="20" data-paddingL="1">
+                            <notempty name="vo.upfile">
+                                <img src="/Uploads/Images/{$Think.CONTROLLER_NAME}/{$vo.upfile}">
+                            </notempty>
+                            {$vo.content|subtext=20}
+                        </li>
+                        <li class="tal" data-width="18" data-paddingL="1">{$vo.province} - {$vo.city}</li>
+                        <li class="tal" data-width="12" data-paddingL="1">{$vo.user_nick_name}</li>
+                        <li data-width="6">{$vo.like_count}</li>
+                        <li data-width="6">{$vo.comment_count}</li>
+                        <li data-width="6"><eq name="vo.status" value="1"><strong class="cGreen">启动</strong><else/>未启动</eq></li>
+                        <li>{$vo.create_time|date='Y-m-d',###}</li>
+                        <li data-width="14">
+                            <if condition="view_auth_check(U('edit'))"><a class="aRead" href="{:U('edit')}"></a></if>
+                            <if condition="view_auth_check(U('delete'))"><a class="aDelete" href="{:U('delete')}"></a></if>
+                            <eq name="vo.status" value="1">
+                                <if condition="view_auth_check(U('statusDown'))"><a class="aStar" href="{:U('statusDown')}"></a></if>
+                                <else/>
+                                <if condition="view_auth_check(U('statusUp'))"><a class="aUnStar" href="{:U('statusUp')}"></a></if>
+                            </eq>
+                        </li>
+                    </ul>
+                </volist>
+            </div>
+        </div>
+    </form>
+
+    <notempty name="list">
+        <div class="dPageBox">
+            <div class="dBatch fl">
+                <input id="ckAll_list" class="fl" type="checkbox">
+                <span class="aLinkAbox" style="display:none;">
+                    <if condition="view_auth_check(U('delete'))"><a id="batchDel" href="{:U('delete')}">删除</a></if>
+                    <if condition="view_auth_check(U('statusUp'))"><a id="batchStar" href="{:U('statusUp')}">启动</a></if>
+                    <if condition="view_auth_check(U('statusDown'))"><a id="batchUnStar" href="{:U('statusDown')}">不启动</a></if>
+                </span>
+            </div>
+            <div class="dPage fr">
+                <form id="formPage">
+                    {$page}
+                    <notempty name="page">
+                        <em>到第<input name="p" type="text">页</em>
+                        <a class="aSubmit" href="javascript:void(0)">{$Think.lang.TPL_btn_confirm}</a>
+                        <input name="title" type="hidden" value="{$Think.get.title}">
+                        <input name="nick_name" type="hidden" value="{$Think.get.nick_name}">
+                        <input name="startTime" type="hidden" value="{$Think.get.startTime}">
+                        <input name="endTime" type="hidden" value="{$Think.get.endTime}">
+                    </notempty>
+                </form>
+            </div>
+        </div>
+    </notempty>
+</div>
+
+<!-- JavaScript -->
+<script src="__PUBLIC__/Static/scripts/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC____MODULE__/scripts/ruis-common.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>{$Think.lang.TPL_welcome}</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="__PUBLIC____MODULE__/styles/ruis-common.css">
+</head>
+<body>
+<div class="dMain">
+    <div class="ifrTitle yh">
+        <div class="mark">系统设置</div>
+    </div>
+
+    <div class="dEdit">
+        <form id="formEdit" autocomplete="off">
+            <input name="id" type="hidden" value="1">
+            <ul>
+                <li class="liTit">iOS下载地址</li>
+                <li class="liCon"><input class="inputTxt w310 fl" name="down_link_ios" type="text" value="{$vo.down_link_ios}"></li>
+            </ul>
+            <ul>
+                <li class="liTit">Android下载地址</li>
+                <li class="liCon"><input class="inputTxt w310 fl" name="down_link_android" type="text" value="{$vo.down_link_android}"></li>
+            </ul>
+            <ul>
+                <li class="liTit">热门图片点赞数</li>
+                <li class="liCon">
+                    <input class="inputTxt w310 fl" name="topic_like_count" type="text" value="{$vo.topic_like_count}">
+                    <span class="cGray ml10 fl">请填写数字</span>
+                </li>
+            </ul>
+            <ul>
+                <li class="liTit">热门图片比例</li>
+                <li class="liCon">
+                    <input class="inputTxt w310 fl" name="topic_proportion" type="text" value="{$vo.topic_proportion}">
+                    <span class="cGray ml10 fl">请填写数字(1,9)</span>
+                </li>
+            </ul>
+            <ul>
+                <li class="liSave">
+                    <a href="{:U('update')}" class="aButtonB w110 formSub">{$Think.lang.Tpl_btn_keep}</a>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="__PUBLIC__/Static/scripts/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC____MODULE__/scripts/ruis-common.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>{$Think.lang.TPL_welcome}</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="__PUBLIC____MODULE__/styles/ruis-common.css">
+    <style>
+        .coupon_info span{ width:80px; padding-right:10px; display:block; float:left; text-align:right; color:#999;}
+    </style>
+</head>
+<body>
+<div class="dMain">
+    <div class="ifrTitle yh">
+        <div class="mark">查看订单</div>
+    </div>
+
+    <div class="dEdit">
+        <ul>
+            <li class="liTit">订单 ID</li>
+            <li class="liCon">{$vo.order_id}</li>
+        </ul>
+        <ul>
+            <li class="liTit">订单验证码</li>
+            <li class="liCon">{$vo.trade_no}</li>
+        </ul>
+        <ul>
+            <li class="liTit">门店名</li>
+            <li class="liCon">{$vo.shop_title}</li>
+        </ul>
+        <ul>
+            <li class="liTit">优惠劵名</li>
+            <li class="liCon">{$vo.shop_coupon_title}</li>
+        </ul>
+        <ul>
+            <li class="liTit">订单时间</li>
+            <li class="liCon">{$vo.create_time|date='Y-m-d H:i:s',###}</li>
+        </ul>
+        <ul>
+            <li class="liTit">消费状态</li>
+            <li class="liCon"><eq name="vo.trade_state" value="1"><strong class="cRed">已消费</strong><else/>未消费</eq></li>
+        </ul>
+        <eq name="vo.trade_state" value="1">
+            <ul>
+                <li class="liTit">消费时间</li>
+                <li class="liCon">{$vo.update_time|date='Y-m-d H:i:s',###}</li>
+            </ul>
+        </eq>
+        <ul>
+            <li class="liTit">消费用户昵称</li>
+            <li class="liCon">{$vo.nick_name}</li>
+        </ul>
+        <ul>
+            <li class="liTit">优惠劵快照</li>
+            <li class="liCon coupon_info">
+                <span>商家名 : </span><i class="cRed">{$vo.shop_coupon_info.title}</i><br>
+                <span>优惠劵类型 : </span><i class="cRed">{$vo.shop_coupon_info.coupon_type}</i><br>
+                <span>抵扣价值 : </span><i class="cRed">{$vo.shop_coupon_info.coupon_worth}</i><br>
+                <span>优惠劵内容 : </span><i class="cRed">{$vo.shop_coupon_info.content}</i><br>
+                <span>需要消费颜币 : </span><i class="cRed">{$vo.shop_coupon_info.like_consume_count}</i><br>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="__PUBLIC__/Static/scripts/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC____MODULE__/scripts/ruis-common.js"></script>
+</body>
+</html>

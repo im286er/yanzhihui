@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>{$Think.lang.TPL_welcome}</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="__PUBLIC____MODULE__/styles/ruis-common.css">
+</head>
+<body>
+<div class="dMain">
+    <div class="ifrTitle yh">
+        <div class="mark">头像认证管理</div>
+    </div>
+
+    <div class="dSearch">
+        <form id="dSearch" autocomplete="off">
+            <ul>
+                <li class="liTit">用户昵称</li>
+                <li><input class="inputTxt w310" name="title" type="text" value="{$Think.get.title}"></li>
+                <li><a id="searchBtn" class="aButtonC w110 ml10 fl" href="javascript:void(0)">{$Think.lang.Tpl_btn_search}</a></li>
+            </ul>
+        </form>
+    </div>
+
+    <form id="form" method="post">
+        <input id="itemID" name="itemID" type="hidden">
+        <div class="dList">
+            <ul class="dListMark">
+                <li class="bgNone" data-width="5"></li>
+                <li class="tal" data-width="40" data-paddingL="1">用户昵称</li>
+                <li class="tal" data-width="22" data-paddingL="1">用户地区</li>
+                <li data-width="6">性 别</li>
+                <li>注册时间</li>
+                <li class="bgNone" data-width="14">操 作</li>
+            </ul>
+            <div class="dSlide">
+                <volist name="list" id="vo">
+                    <ul>
+                        <li class="tal" data-width="3" data-paddingL="2"><input type="checkbox" name="singleID[]" value="{$vo.id}" class="checkbox"></li>
+                        <li class="tal" data-width="40" data-paddingL="1">
+                            <notempty name="vo.upfile_head_auth">
+                                <img src="/Uploads/Images/User/{$vo.upfile_head_auth}">
+                            </notempty>
+                            {$vo.nick_name}
+                        </li>
+                        <li class="tal" data-width="22" data-paddingL="1">{$vo.province} - {$vo.city}</li>
+                        <li data-width="6"><eq name="vo.sex" value="1">男<else/>女</eq></li>
+                        <li>{$vo.create_time|date='Y-m-d',###}</li>
+                        <li data-width="14">
+                            <if condition="view_auth_check(U('edit'))"><a class="aModify" href="{:U('edit')}"></a></if>
+                        </li>
+                    </ul>
+                </volist>
+            </div>
+        </div>
+    </form>
+
+    <notempty name="list">
+        <div class="dPageBox">
+            <div class="dPage fr">
+                <form id="formPage">
+                    {$page}
+                    <notempty name="page">
+                        <em>到第<input name="p" type="text">页</em>
+                        <a class="aSubmit" href="javascript:void(0)">{$Think.lang.TPL_btn_confirm}</a>
+                        <input name="title" type="hidden" value="{$Think.get.title}">
+                    </notempty>
+                </form>
+            </div>
+        </div>
+    </notempty>
+</div>
+
+<!-- JavaScript -->
+<script src="__PUBLIC__/Static/scripts/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC____MODULE__/scripts/ruis-common.js"></script>
+</body>
+</html>

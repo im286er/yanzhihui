@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>{$Think.lang.TPL_welcome}</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="__PUBLIC____MODULE__/styles/ruis-common.css">
+</head>
+<body>
+<div class="dMain">
+    <div class="ifrTitle yh">
+        <div class="mark">订单管理</div>
+    </div>
+
+    <form id="form" method="post">
+        <input id="itemID" name="itemID" type="hidden">
+
+        <div class="dList">
+            <ul class="dListMark">
+                <li class="tal" data-width="12" data-paddingL="1">订单 ID</li>
+                <li class="tal" data-width="12" data-paddingL="1">验证码</li>
+                <li class="tal" data-width="14" data-paddingL="1">门店名</li>
+                <li class="tal" data-width="14" data-paddingL="1">优惠劵名</li>
+                <li data-width="14">订单时间</li>
+                <li data-width="6">消费状态</li>
+                <li data-width="14">消费时间</li>
+                <li class="bgNone">操 作</li>
+            </ul>
+            <volist name="list" id="vo">
+                <ul>
+                    <li class="tal" data-width="12" data-paddingL="1">
+                        <input type="hidden" name="singleID[]" value="{$vo.id}" class="checkbox">
+                        {$vo.order_id}
+                    </li>
+                    <li class="tal" data-width="12" data-paddingL="1">{$vo.trade_no}</li>
+                    <li class="tal" data-width="14" data-paddingL="1">{$vo.shop_title|subtext=15}</li>
+                    <li class="tal" data-width="14" data-paddingL="1">{$vo.shop_coupon_title|subtext=15}</li>
+                    <li data-width="14">{$vo.create_time|date='Y-m-d H:i:s',###}</li>
+                    <li data-width="6">
+                        <switch name="vo.trade_state">
+                            <case value="1"><strong class="cGreen">已消费</strong></case>
+                            <case value="2"><strong class="cRed">已撤销</strong></case>
+                            <default />未消费
+                        </switch>
+                    </li>
+                    <li data-width="14"><eq name="vo.trade_state" value="1">{$vo.update_time|date='Y-m-d H:i:s',###}</eq></li>
+                    <li>
+                        <a class="aRead" href="{:U('read')}"></a>
+                        <eq name="vo.trade_state" value="0"><a class="aRecall" href="{:U('recall')}" style="margin:0 5px;">撤回</a></eq>
+                    </li>
+                </ul>
+            </volist>
+        </div>
+    </form>
+
+    <notempty name="list">
+        <div class="dPageBox">
+            <div class="dPage fr">
+                <form id="formPage">
+                    {$page}
+                    <notempty name="page">
+                        <em>到第<input name="p" type="text">页</em>
+                        <a class="aSubmit" href="javascript:void(0)">{$Think.lang.TPL_btn_confirm}</a>
+                    </notempty>
+                </form>
+            </div>
+        </div>
+    </notempty>
+</div>
+
+<!-- JavaScript -->
+<script src="__PUBLIC__/Static/scripts/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC____MODULE__/scripts/ruis-common.js"></script>
+<script>
+    $(".dList .aRecall").click(function() {
+        var singleID = $(this).parents("ul").find(".checkbox").val();
+        $("#itemID").val(singleID);
+        URL = $(this).attr("href");
+        formAjaxList("POST", URL, $("#form"));
+        return false;
+    });
+</script>
+</body>
+</html>

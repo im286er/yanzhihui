@@ -1,0 +1,232 @@
+﻿@charset "utf-8";
+/* reset */
+body,h1,h2,h3,h4,blockquote,p,dl,dt,dd,ul,ol,li,th,td,form,fieldset,legend,button,input,textarea{ margin:0; padding:0;}
+body,button,input,select,textarea{ font:12px/1.5 "微软雅黑",\5b8b\4f53,arial,sans-serif;}
+body{ text-align:left; color:#32393d; background:#fff;}
+button,input,select,textarea,h1,h2,h3,h4{ font-size:100%;}
+input,select,textarea{ outline:none; resize:none;}
+em,i{ font-style:normal;}
+ol,ul{ list-style:none;}
+img,fieldset{ border:0; vertical-align:middle;}
+table{ table-layout:fixed;}
+table th,table td{ word-wrap:break-word; word-break:break-all;}
+.cf:after{ height:0; display:block; overflow:hidden; content:"\20"; clear:both;}
+.cf{ *zoom:1;}
+.clear{ height:0; overflow:hidden; clear:both; font-size:0; line-height:0; visibility:hidden;}
+a{ color:#787b7f; text-decoration:none;}
+a:hover{ color:#787b7f;}
+.fl{ float:left; display:inline;}
+.fr{ float:right; display:inline;}
+
+/* commom */
+.dMain{ padding:50px 40px;}
+
+/* font */
+.f14{ font-size:14px;}
+.tac{ text-align:center;}
+.tal{ text-align:left;}
+.yh{ font-family:"微软雅黑";}
+.cGray{ color:#bbb;}
+.cRed{ color:#d80000;}
+.cGreen{ color:#2ecc71;}
+
+/* margin */
+.ml10{ margin-left:10px;}
+.mr10{ margin-right:10px;}
+.mr20{ margin-right:20px;}
+
+/* width */
+.w50{ width:50px;}
+.w110{ width:110px;}
+.w190{ width:190px;}
+.w200{ width:200px;}
+.w310{ width:310px;}
+.w320{ width:320px;}
+.w450{ width:450px;}
+
+/* login */
+.dLogin{ width:100%; height:100%; position:relative; background:#4ab475 url(../images/bg_login_1.jpg) center top repeat-x; overflow:hidden;}
+.dLoginMain{ width:360px; height:462px; position:absolute; z-index:2; top:50%; left:50%; margin:-235px 0 0 -180px; vertical-align:middle; overflow:hidden;}
+.dLoginLogo{ width:65px; height:65px; margin:0 auto 48px; background:url(../images/logo_login.png) center top no-repeat; _background-image:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/Public/Manager/images/login_logo.png');}
+.dLoginLine{ width:360px; height:1px; line-height:0; font-size:0; border-bottom:1px solid #55afa6; margin-bottom:40px; display:block; background:#1f7069;}
+.dLoginBox{ width:360px; height:156px; font-size:14px; color:#32393d; background:url(../images/bg_login_2.jpg) center top no-repeat;}
+.dLoginBox li{ height:32px; padding:9px 10px 9px 21px; margin-bottom:2px; overflow:hidden;}
+.dLoginBox em{ width:56px; line-height:32px; float:left;}
+.dLoginBox i{ width:190px; height:32px; float:left;}
+.dLoginBox li input{ width:182px; height:24px; line-height:24px; padding:4px; border:0; background:none;}
+.dLoginBox .inSub{ width:360px; height:47px; margin-top:20px; padding:0; border:0; cursor:pointer; font-size:16px; font-weight:bold; color:#2c5946; background:url(../images/bg_login_3.jpg) center top no-repeat;}
+.dLoginBox li img{ float:right; cursor:pointer;}
+.dLoginError{ display:none; height:16px; line-height:16px; padding-top:16px; color:#fff600;}
+.dLoginBot{ height:38px; line-height:38px; margin-top:-38px; position:relative; text-align:center; color:#fff;}
+
+/* index */
+.dMainIndex{ height:100%; width:100%; margin:0 auto; position:relative; overflow:hidden;}
+.dMainIndexT{ width:100%; height:40px; background:#2f2f2f; position:absolute; top:0; left:0;}
+.dMainIndexR{ margin-left:190px; height:100%; overflow:hidden;}
+.dMainIndexL{ width:189px; border-right:1px solid #d2d2d2; height:100%; position:absolute; top:0; left:0; background:#f5f5f5;}
+.dIframe{ height:100%; width:100%; background:#fff;}
+.dMainIndexL .dLogo{ width:190px; height:40px; margin-right:-1px; position:relative; overflow:hidden;}
+.dMenuL div{ display:none;}
+.dMenuL .cur{ display:block;}
+.dMenuL dl{ line-height:34px;}
+.dMenuL a{ padding-left:20px; height:34px; line-height:34px; display:block;}
+.dMenuL dt{ padding-left:20px; height:34px; font-weight:bold;}
+.dMenuL dd a{ color:#333;}
+.dMenuL a.cur,.dMenuL a:hover{ background:#2ecc71; color:#fff; zoom:1;}
+.dMenuL .iLine{ display:block; margin:10px 0; height:1px; line-height:0; font-size:0; background:#d2d2d2;}
+
+.MenuSliTab{ height:40px; line-height:40px; margin-left:190px;}
+.MenuSliTab span{ width:100px; height:40px; float:left; display:inline; text-align:center; cursor:pointer; font-weight:bold; color:#fff;}
+.MenuSliTab .cur{ color:#333; background:#fff;}
+
+.dMainTmember{ width:136px; height:40px; position:absolute; right:30px; top:0; cursor:pointer; color:#fff;}
+.mouseOn{ background:#fff; color:#333;}
+.dMainTmember i{ height:40px; line-height:40px; float:left; display:inline; cursor:pointer; overflow:hidden;}
+.dMainTmember .iImg1{ width:18px; height:18px; line-height:0; margin:11px 7px 0 10px; background:url(../images/icon_top_icon_1.png) 0 0 no-repeat; _background-image:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/Public/Manager/images/icon_top_icon_1.png');}
+.dMainTmember:hover .iImg1{ background:url(../images/icon_top_icon_2.png) 0 0 no-repeat; _background-image:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/Public/Manager/images/icon_top_icon_2.png');}
+.dMainTmember .iImg2{ width:30px; background:url(../images/icon_static_arrow.png) 2px 18px no-repeat;}
+.dMainTmember .iTxt{ width:70px;}
+.dMainTmemberPop{ width:128px; display:none; padding:4px; position:absolute; left:0; top:36px; background:#2f2f2f; zoom:1; -moz-border-radius:4px; -webkit-border-radius:4px; border-radius:4px;}
+.dMainTmemberPop a{ padding-left:10px; height:34px; line-height:34px; display:block; color:#fff; zoom:1; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px;}
+.dMainTmemberPop a:hover{ background:#505050;}
+
+
+/* title */
+.ifrTitle{ height:45px; overflow:hidden; padding:30px 0;}
+.ifrTitle .mark{ line-height:45px; float:left; font-size:30px;}
+.ifrTitle .subMark{ float:right;}
+
+/* search */
+.dSearch{ height:auto; padding:20px 20px 20px 0; margin-bottom:30px; overflow:hidden; -moz-border-radius:4px; -webkit-border-radius:4px; border-radius:4px; background:#f3f3f3;}
+.dSearch ul{ float:left; width:100%; margin:5px 0;}
+.dSearch ul li{ float:left;}
+.dSearch ul .liTit{ float:left; padding:0 15px 0 30px; line-height:36px; text-align:right; font-size:14px;}
+.dSearch .operateBtnBg li{ margin-top:10px; padding-left:90px;}
+
+/* list */
+.dList{ border:1px solid #c3c4c5; background:#fff; -moz-border-radius:4px; -webkit-border-radius:4px; border-radius:4px;}
+.dList .dListMark,.dListMark{ border-top:0; background:#f3f3f3; -moz-border-radius:4px 4px 0 0; -webkit-border-radius:4px 4px 0 0; border-radius:4px 4px 0 0;}
+.dList ul{ line-height:40px; border-top:1px solid #c3c4c5; *zoom:1;}
+.dList ul{ height:auto; overflow:hidden;}
+.dList li{ width:10%; height:40px; overflow:hidden; float:left; display:inline; text-align:center; color:#787b7f;}
+.dList .dListMark li{ color:#bbb; background:url(../images/bg_list_line.png) right top repeat-y;}
+.dList .dListMark .bgNone{ background:none;}
+.dList li.tal{ text-align:left;}
+.liSel .checkbox{ float:left; margin-top:14px; cursor:pointer;}
+.dList .dSlide ul,.dList .dSlide li{ height:60px; line-height:60px;}
+.dList .dSlide ul{ padding:10px 0;}
+.dList .dSlide img{ height:60px; margin-right:10px;}
+
+.dImpower{ margin-bottom:20px;}
+.dImpower ul,.dImpower .dListMark li{ border-top:0;}
+.dImpower ul li{ border-top:1px solid #c3c4c5;}
+.dImpower label{ cursor:pointer;}
+
+/* dList operate */
+.dList .aCopy,.dList .aLink{ padding:2px 5px; margin-left:10px; background:#ececec; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;}
+.dList .aRead,.dList .aModify,.dList .aDelete,.dList .aStar,.dList .aUnStar,.dList .aTxt{ padding:13px; margin:0 5px; zoom:1;}
+.dList .aRead{ background:url(../images/icon_list_read.png) center center no-repeat;}
+.dList .aModify{ background:url(../images/icon_list_modify.png) center center no-repeat;}
+.dList .aDelete{ background:url(../images/icon_list_delete.png) center center no-repeat;}
+.dList .aStar{ background:url(../images/icon_list_star.png) center center no-repeat;}
+.dList .aUnStar{ background:url(../images/icon_list_unstar.png) center center no-repeat;}
+.dList .aTxt{ padding:13px 2px;}
+
+/* dPageBox */
+.dPageBox{ height:30px; padding:30px 0 0 1px;}
+.dBatch{ height:26px; line-height:26px; padding-left:2%;}
+.dBatch input{ margin-top:6px;}
+.dBatch a,.dBatch i{ margin-left:20px; float:left;}
+.dBatch a{ color:#2197e0;}
+.dBatch a:hover{ color:#2197e0; text-decoration:underline;}
+.dBatch input{ cursor:pointer;}
+
+.dPage{ height:30px; line-height:26px; font-size:14px; color:#bbb;}
+.dPage a{ padding:6px 8px; line-height:14px; margin:0 3px; color:#32393d; zoom:1; *position:relative; top:5px;}
+.dPage .pCur{ padding:6px 8px; margin:0 3px; line-height:14px; zoom:1; *position:relative; top:5px;}
+.dPage .pCur,.dPage a:hover,.dPage .aSubmit{ color:#fff; background:#505050; -moz-border-radius:4px; -webkit-border-radius:4px; border-radius:4px;}
+.dPage input{ width:30px; height:16px; line-height:16px; padding:4px; border:1px solid #aaa; margin:0 4px; background:#fff; -moz-border-radius:4px; -webkit-border-radius:4px; border-radius:4px; *margin-bottom:-4px; *position:relative; *left:4px;}
+.dPage .aSubmit{ margin-left:5px;}
+.dPage .aSubmit:hover{ background:#32393d;}
+
+/* input,textarea */
+.inputTxt,.inputTxtFo,.inputTxtEr,.areaA,.areaAFo,.areaAEr{ height:24px; padding:5px; font-size:14px; line-height:24px; color:#32393d; cursor:pointer; background:#fff; border:1px solid #ccc; -moz-border-radius:4px; -webkit-border-radius:4px; border-radius:4px;}
+.areaA,.areaAFo,.areaAEr{ height:110px; padding:5px; vertical-align:top;}
+.inputTxt:hover,.areaA:hover{ border-color:#aaa;}
+.inputTxtFo,.areaAFo{ border-color:#2197e0;}
+.inputTxtEr,.areaAEr{ border-color:#de6e6e;}
+.inputStateDe{ border-color:#ccc;}
+
+/* button */
+.aButtonA,.aButtonB,.aButtonC{ display:block; text-align:center; font-size:14px; -moz-border-radius:4px; -webkit-border-radius:4px; border-radius:4px;}
+.aButtonA,.aButtonB{ height:43px; line-height:43px;}
+.aButtonA{ border:1px solid #f7a21d; font-weight:bold; color:#fff; background:#f7a21d;}
+.aButtonC{ height:34px; line-height:34px; font-size:12px; font-weight:normal;}
+.aButtonB,.aButtonC{ border:1px solid #505050; font-weight:bold; color:#fff; background:#505050;}
+.aButtonA:hover,.aButtonB:hover,.aButtonC:hover{ border-color:#32393d; color:#fff; background:#2f2f2f;}
+
+/* edit base */
+.dEdit ul{ float:left; width:100%; padding:10px 0;}
+.dEdit li{ float:left; line-height:36px;}
+.dEdit .liTit{ width:12%; padding-right:2%; font-size:14px; text-align:right;}
+.dEdit .liCon{ width:86%;}
+.dEdit .liError{ float:left; width:86%; height:22px; padding:8px 0 0 14%; clear:both; line-height:22px; color:#d80000;}
+.dEdit .liSave{ padding:25px 14% 25px;}
+
+/* edit checkbox,edit radio */
+.dEdit .checkbox dd,.dEdit .radio dd{ width:15%; height:36px; overflow:hidden; float:left;}
+.dEdit .checkbox input,.dEdit .radio input{ width:20px; margin-right:5px;}
+
+/* edit upload */
+.dEdit .showPic,.dEdit .showPicAll,.dEdit .progressWrapperBg,.dEdit .uploadBtnBg{ width:100%; overflow:hidden;}
+.dEdit .showPic span{ height:100px; overflow:hidden; line-height:100px; display:block; margin:0 10px 10px 0; float:left; position:relative; background:#e8e8e8;}
+.dEdit .showPic .aDelImg{ position:absolute; top:0; right:0; z-index:10; width:18px; height:18px; background:url(../images/icon_upload_del_1.png) 0 0 no-repeat;}
+.dEdit .showPic .aDelImg:hover{ background:url(../images/icon_upload_del_2.png) 0 0 no-repeat;}
+.dEdit .showPic span img{ float:left;}
+.dEdit .upLoadPicAll .showPic span{ height:120px;}
+.dEdit .upLoadPicAll .showPic span img{ width:120px;}
+
+.dEdit .progressWrapperBg .progressContainer{ width:380px; overflow:hidden; padding:5px 10px; background:#F7F7F7; position:relative;}
+.dEdit .progressWrapperBg .red{ background:#FFEBEB;}
+.dEdit .progressWrapperBg .green{ background:#EBFFEB;}
+.dEdit .progressWrapperBg .blue{ background:#F0F5FF;}
+.dEdit .progressWrapperBg .progressName{ width:100%; height:24px; overflow:hidden; line-height:24px;}
+.dEdit .progressWrapperBg .progressCancel{ width:18px; height:18px; display: block; background:url(../images/icon_upload_del_1.png) 0 0 no-repeat; position:absolute; top:10px; right:10px;}
+.dEdit .progressWrapper .progressCancel:hover{ background:url(../images/icon_upload_del_2.png) 0 0 no-repeat;}
+.dEdit .progressBarInProgress,.dEdit .progressBarComplete,.dEdit .progressBarError{ height:2px; background:blue; margin-top:2px;}
+.dEdit .progressBarComplete{ width:100%; background:green;}
+.dEdit .progressBarError{ width:100%; background:red;}
+.dEdit .progressBarStatus{ width:100%;}
+
+.dEdit .uploadBtnBg{ margin-top:10px;}
+.dEdit .uploadBtnBg .aUpload,.dEdit .uploadBtnBg .aCancel{ width:100px; height:30px;}
+.dEdit .uploadBtnBg .aCancel{ background:#e8e8e8; color:#888; border:none;}
+
+/* multiselect */
+.ui-multiselect{ height:34px; line-height:34px; overflow:hidden; padding:0 5px; text-align:left;}
+.ui-multiselect span.ui-icon{ float:right; height:100%; background:url(../images/icon_static_arrow.png) 0 center no-repeat;}
+.ui-multiselect-single .ui-multiselect-checkboxes input{ position:absolute !important; top:auto !important; left:-9999px;}
+.ui-multiselect-single .ui-multiselect-checkboxes label{ padding:5px !important;}
+
+.ui-multiselect-header{ margin-bottom:3px; height:30px; line-height:30px; padding:0 5px; overflow:hidden;}
+.ui-multiselect-header ul li{ float:left;}
+.ui-multiselect-header a:hover{ text-decoration:underline;}
+.ui-multiselect-header span.ui-icon{ float:left;}
+.ui-multiselect-header li.ui-multiselect-close{ display:none;}
+
+.ui-multiselect-hasfilter ul{ position:relative;}
+.ui-multiselect-filter{ float:left;}
+.ui-multiselect-filter input{ width:100px; margin-left:5px; height:20px; line-height:20px; overflow:hidden; padding:0 2px; border:1px solid #666; -webkit-appearance:textfield; -webkit-box-sizing:content-box;}
+
+.ui-multiselect-menu{ display:none; padding:3px; position:absolute; z-index:10000; text-align:left;}
+.ui-multiselect-checkboxes{ position:relative /* fixes bug in IE6/7 */; overflow-y:auto;}
+.ui-multiselect-checkboxes label{ cursor:default; display:block; border:1px solid transparent; height:20px; line-height:20px; font-size:12px; overflow:hidden; padding:5px;}
+.ui-multiselect-checkboxes label input{ position:relative; margin-right:5px;}
+.ui-multiselect-checkboxes li{ clear:both; padding:2px 0;}
+.ui-multiselect-checkboxes li.ui-multiselect-optgroup-label{ text-align:center;}
+.ui-multiselect-checkboxes li.ui-multiselect-optgroup-label a{ display:block; text-decoration:none;}
+
+* html .ui-multiselect-checkboxes label{ border:none;}
+
+/* pop */
+.alPop{ width:180px; height:80px; line-height:80px; display:none; position:absolute; left:50%; margin-left:-90px; z-index:9999; text-align:center; color:#fff; background:#32393d; filter:alpha(Opacity=90); opacity:0.9; -moz-border-radius:4px; -webkit-border-radius:4px; border-radius:4px;}
