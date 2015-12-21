@@ -179,15 +179,15 @@ class UserModel extends CommonModel {
      * 注册用户 do_register
      */
     public function do_register() {
-        if ($this->create('', self::MODEL_REGISTER)) {
+        //if ($this->create('', self::MODEL_REGISTER)) {
             /* 本地注册用户 */
             $data['telephone'] = I('post.telephone');
             $data['password'] = MD5(I('post.password'));
             $data['client_system'] = I('post.client_system');
             $data['push_id'] = I('post.push_id');
             $data['create_time'] = NOW_TIME;
+            $data['user_type'] = 0;
             $result = $this->add($data);
-
             if ($result) {
                 /* 注册IM账号 */
                 $IM_username = C('EASEMOB.EASEMOB_PREFIX') . $result;
@@ -198,7 +198,6 @@ class UserModel extends CommonModel {
                 $IM_result = $rest->hx_register($IM_username, $IM_password, '');
                 $IM_resultArr = json_decode($IM_result, true);
                 $IM_uuid = $IM_resultArr['entities'][0]['uuid'];
-
                 /* 更新用户IM信息 */
                 if ($IM_uuid) {
                     $IM_data_info['IM_uuid'] = $IM_uuid;
@@ -227,12 +226,11 @@ class UserModel extends CommonModel {
                             'type' => 5
                         );
                         $rest->hx_send($sender, $receiver, $msg, $ext);
-
                         return true;
                     }
                 }
             }
-        }
+        //}
         return false;
     }
 

@@ -26,16 +26,17 @@ class SendsmsModel extends CommonModel {
      * @return bool|int
      */
     public function do_register($telephone = NULL) {
-        if ($this->create('', self::MODEL_REGISTER)) {
+        //if ($this->create('', self::MODEL_REGISTER)) {
             /* 定义变量 */
             $code = rand('100000', '999999');
             $content = array($code, C('API_SMS.lost_time') / 60);
             $template = 36687;
             /* 手机号码，替换内容数组，模板ID */
             $resultSMS = sendTemplateSMS($telephone, $content, $template);
-            if ($resultSMS->statusCode == 0)
+            if ($resultSMS->statusCode == 0){
                 return $code;
-        }
+            }
+        //}
         return false;
     }
 

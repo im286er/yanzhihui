@@ -68,6 +68,8 @@ class UserController extends BaseController {
             $model = D('Sendsms');
             if ($type == 'register') {
                 $result = $model->do_register($telephone);
+                var_dump($result);
+                exit;
             } else {
                 $result = $model->do_forget($telephone);
             }

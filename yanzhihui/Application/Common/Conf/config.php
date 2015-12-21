@@ -84,7 +84,7 @@ return array(
         'AppKey'         => 'yanzhihui/yanzhihui',
         'client_id'      => 'YXA6oCNYQD_wEeWGpcfvtJTsFg',
         'client_secret'  => 'YXA66IriRGb5eYmRPF4dTFkCPpmYcmQ',
-        'EASEMOB_PREFIX' => 'yanzhihui_'
+        'EASEMOB_PREFIX' => 'yanzhihui_0'
     ),
 
     /**

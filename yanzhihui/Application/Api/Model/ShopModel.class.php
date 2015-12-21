@@ -34,12 +34,14 @@ class ShopModel extends CommonModel {
         } else {
             /* 查询条件 */
             $field = 'id,title,address,upfile,fun_distance(' . $current_latitude . ',' . $current_longitude . ',latitude,longitude) as distance_for_me,0 as want_count,0 as is_want';
+            //$field = 'id,title,address,upfile,0 as want_count,0 as is_want';
             $where['status'] = array('EQ', 1);
             $where['display'] = array('EQ', 1);
             if ($city) {
                 $where['topic.city'] = array('EQ', $city);
             }
             $order = 'distance_for_me asc,id desc';
+            //$order = 'id desc';
             /* 查询数据 */
             $list = $this->field($field)->where($where)->order($order)->limit(C('PAGE_NUM_LIST') * C('PAGE_NUM_MAX'))->select();
 

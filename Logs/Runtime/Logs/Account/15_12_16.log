@@ -1,9 +1,0 @@
-[ 2015-12-16T12:26:54+08:00 ] ::1 /yanzhihui/?m=account&c=index&a=index
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
-INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
-
