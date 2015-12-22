@@ -78,7 +78,7 @@ class UserModel extends CommonModel {
         if($list){
             foreach ($list as $k => $v) {
                 if($v['img']){
-                    $v['img'] = C('APP_URL') . '/Uploads/Images/Topic/' . $v['img'];
+                    $v['img'] = C('APP_URL') . '/Uploads/Images/Shop/' . $v['img'];
                 }
                 /*if($v['went_time']){
                     $v['went_time'] = date("Y-m-d H:i:s",$v['went_time']);

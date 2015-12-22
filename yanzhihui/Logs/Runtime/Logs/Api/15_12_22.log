@@ -1,0 +1,45 @@
+[ 2015-12-22T11:00:56+08:00 ] ::1 /yanzhihui/?m=api&c=level&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_level` [ RunTime:0.0700s ]
+SQL: SHOW COLUMNS FROM `xian_level` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `xian_level`  [ RunTime:0.0000s ]
+
+[ 2015-12-22T11:03:48+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0320s ]
+SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0440s ]
+SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img,went.create_time as went_time FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.shop_id  WHERE `user_id` = '' ORDER BY went.create_time desc  [ RunTime:0.0410s ]
+
+[ 2015-12-22T11:10:50+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went?user_id=2888
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-12-22T11:11:04+08:00 ] ::1 /yanzhihui/?m=api&c=user&a=my_went&ser_id=2888
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0030s ]
+SQL: SELECT went.shop_id as shop_id,went.content as content,s.title as title,s.upfile as img,went.create_time as went_time FROM xian_shop_user_went went LEFT JOIN xian_shop s on s.id = went.shop_id  WHERE `user_id` = '' ORDER BY went.create_time desc  [ RunTime:0.0000s ]
+
