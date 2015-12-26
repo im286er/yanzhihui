@@ -43,8 +43,6 @@ class CouponController extends BaseController {
                         $push_id = array_filter(array_unique(array_slice($push_id, 0, 1000)));
                         $this->push_one($push_id, $data_shop_user_went);
                     }
-
-                    exit;
                 }
             } else {
                 $this->return_post($model);

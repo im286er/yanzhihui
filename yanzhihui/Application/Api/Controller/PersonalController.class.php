@@ -27,4 +27,5 @@ class PersonalController extends BaseController {
         }
         $this->ajaxReturn(array('RESPONSE_STATUS' => 500, 'Tips' => L('YZ_return_failure')));
     }
+
 }

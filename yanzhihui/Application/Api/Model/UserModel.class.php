@@ -57,6 +57,20 @@ class UserModel extends CommonModel {
     /* 数据操作 */
 
 
+    public function find_by_topic($topic_id){
+        $where_topic_id['id'] = array('EQ', $topic_id);
+        $topic = M('Topic')->field('user_id')->where($where_topic_id)->limit(1)->find();
+        $where_user_id['id'] = array('EQ', $topic['user_id']);
+        $result = $this->where($where_user_id)->find();
+        return $result;
+    }
+
+    public function find_by_IM($IM_user_id){
+        $where['IM_uuid'] = array('EQ', $IM_user_id);
+        $result = $this->where($where)->find();
+        return $result;
+    }
+
 
     /**
      * 我的去向
@@ -156,7 +170,8 @@ class UserModel extends CommonModel {
      * 查询用户推送状态 find_push_status:$IM_user_id->用户id，$type->1评论2得到颜币3去向4私信
      */
     public function find_push_status($IM_user_id,$type) {
-        $where['id'] = array('EQ', $IM_user_id);
+        //$where['id'] = array('EQ', $IM_user_id);
+        $where['IM_uuid'] = array('EQ', $IM_user_id);
         $field = '';
         if($type == 1){
             $field = 'comment_notify';

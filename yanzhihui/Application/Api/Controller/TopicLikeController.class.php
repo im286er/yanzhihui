@@ -24,26 +24,15 @@ class TopicLikeController extends BaseController {
             $result = $model->do_add();
             /* 返回信息 */
             if ($result) {
-                /* 查询被推送用户的推送状态 */
-                $push_status = D('User')->find_push_status($IM_user_id,2);
-                /* 成功并且IM允许，推送IM */
-                if ($IM_upload && ($push_status == 1)) {
-                    import('Api.ORG.EasemobIMSDK');
-                    $rest = new \Hxcall();
-                    $sender = C('EASEMOB.EASEMOB_PREFIX') . 'topic_like_add';
-                    $receiver = C('EASEMOB.EASEMOB_PREFIX') . $IM_user_id;
-                    $msg = '送你颜币';
-                    $ext = array(
-                        'type'     => 3,
-                        'id'       => $topic_id,
-                        'username' => C('EASEMOB.EASEMOB_PREFIX') . $user_id,
-                        'upload'   => $IM_upload,
-                        'remarks'  => ''
-                    );
-
-                    $rest->hx_send($sender, $receiver, $msg, $ext);
+                $push_user = D('User')->find_by_topic($topic_id);
+                if($push_user['get_gold_notify']){
+                    if(!empty($push_user['push_id'])){
+                        $push_id = array();
+                        $push_id[0] = $push_user['push_id'];
+                        $notification = array('title'  => '送你颜币','extras' => array());
+                        R('Api/Push/push_message_registration', array($push_id, $notification));
+                    }
                 }
-
                 $this->ajaxReturn(array('RESPONSE_STATUS' => 100, 'Tips' => L('YZ_return_success')));
             } else {
                 $this->return_post($model);
