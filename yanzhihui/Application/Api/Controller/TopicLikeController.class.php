@@ -29,9 +29,24 @@ class TopicLikeController extends BaseController {
                     if(!empty($push_user['push_id'])){
                         $push_id = array();
                         $push_id[0] = $push_user['push_id'];
-                        $notification = array('title'  => '送你颜币','extras' => array());
+                        $notification = array('title'  => '你收到一个颜币','extras' => array());
                         R('Api/Push/push_message_registration', array($push_id, $notification));
                     }
+                }
+                if ($IM_upload) {
+                    import('Api.ORG.EasemobIMSDK');
+                    $rest = new \Hxcall();
+                    $sender = C('EASEMOB.EASEMOB_PREFIX') . 'topic_like_add';
+                    $receiver = C('EASEMOB.EASEMOB_PREFIX') . $IM_user_id;
+                    $msg = '送你颜币';
+                    $ext = array(
+                        'type'     => 3,
+                        'id'       => $topic_id,
+                        'username' => C('EASEMOB.EASEMOB_PREFIX') . $user_id,
+                        'upload'   => $IM_upload,
+                        'remarks'  => ''
+                    );
+                    $rest->hx_send($sender, $receiver, $msg, $ext);
                 }
                 $this->ajaxReturn(array('RESPONSE_STATUS' => 100, 'Tips' => L('YZ_return_success')));
             } else {
