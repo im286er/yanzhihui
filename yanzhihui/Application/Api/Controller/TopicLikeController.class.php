@@ -44,7 +44,8 @@ class TopicLikeController extends BaseController {
                         'id'       => $topic_id,
                         'username' => C('EASEMOB.EASEMOB_PREFIX') . $user_id,
                         'upload'   => $IM_upload,
-                        'remarks'  => ''
+                        'remarks'  => '',
+                        'em_ignore_notification' => true
                     );
                     $rest->hx_send($sender, $receiver, $msg, $ext);
                 }
