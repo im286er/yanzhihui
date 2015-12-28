@@ -1,0 +1,970 @@
+[ 2015-12-29T00:50:49+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=shop_user_went&a=unread_info&user_id=3545&auth_token=aGVmYZmUm2xqnA%3D%3D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_user_attention` [ RunTime:0.0030s ]
+SQL: SELECT `to_user_id` FROM `xian_user_attention` WHERE `user_id` = '3545'  [ RunTime:0.0000s ]
+NOTIC: [2] implode(): Invalid arguments passed D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\ShopUserWentModel.class.php 第 198 行.
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0040s ]
+SQL: SELECT `shop_user_went_read_time` FROM `xian_user` WHERE `id` = '3545' LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [2] implode(): Invalid arguments passed D:\software\apache24\htdocs\yanzhihui\Public\ThinkPHP\Library\Think\Db\Driver.class.php 第 567 行.
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND `create_time` > '0' LIMIT 1' at line 1
+
+[ 2015-12-29T00:50:58+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index&page_num=1&user_id=3545&auth_token=aGVmYZmUm2xqnA%253D%253D&user_id=3545&get_user_id=3545
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0050s ]
+SQL: SELECT topic.id,topic.upfile,topic.content,topic.province,topic.city,topic.longitude,topic.latitude,topic.create_time,user.id as user_id,user.nick_name,user.sex,user.top_times,user.top_best,topic.like_count,user.upfile_head as user_upfile_head,user.upfile_head_m as user_upfile_head_m,0 as comment_count,0 as is_like,0 as attention_relation FROM xian_topic topic INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 AND topic.user_id = '3545' ORDER BY topic.id desc LIMIT 500   [ RunTime:0.0780s ]
+
+[ 2015-12-29T00:50:59+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=user&a=info&user_id=3545&auth_token=aGVmYZmUm2xqnA%3D%3D&get_user_id=3545
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xian_user` WHERE `id` = '3545' AND `auth_token` = 'aGVmYZmUm2xqnA==' AND `status` = 1 AND `display` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0040s ]
+SQL: SELECT `id`,`nick_name`,`sex`,`chat_level`,`chat_value`,`comment_notify`,`get_gold_notify`,`trace_notify`,`letter_notify`,`top_times`,`top_best`,`description`,`upfile_head`,`province`,`city`,`upfile_head_auth`,`upfile_head_auth_type`,`IM_username`,`like_count`,`like_now_count`,`like_consume_count`,`attention_count`,`fans_count`,0 as is_be_shielded FROM `xian_user` WHERE `id` = '3545' AND `status` = 1 AND `display` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM xian_shop_user_went shop_user_went INNER JOIN xian_shop shop on shop.id = shop_user_went.shop_id  WHERE shop_user_went.user_id = '3545' AND shop.status = 1 AND shop.display = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `xian_user_attention` [ RunTime:0.0040s ]
+SQL: SELECT `relation` FROM `xian_user_attention` WHERE `user_id` = '3545' AND `to_user_id` = '3545' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `xian_user_blocked` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xian_user_blocked` WHERE `user_id` = '3545' AND `to_user_id` = '3545' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xian_user_blocked` WHERE `user_id` = '3545' AND `to_user_id` = '3545' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2015-12-29T00:51:01+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=user&a=attention&user_id=3545&auth_token=aGVmYZmUm2xqnA%3D%3D&get_user_id=3545&page_num=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xian_user` WHERE `id` = '3545' AND `auth_token` = 'aGVmYZmUm2xqnA==' AND `status` = 1 AND `display` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_user_attention` [ RunTime:0.0030s ]
+SQL: SELECT user.id as user_id,user.nick_name,user.upfile_head,user.sex,user.like_count as user_like_count FROM xian_user_attention user_attention INNER JOIN xian_user user on user_attention.to_user_id = user.id  WHERE user_attention.user_id = '3545' AND user.status = 1 AND user.display = 1 ORDER BY user_attention.create_time desc LIMIT 0,20   [ RunTime:0.0180s ]
+
+[ 2015-12-29T00:51:03+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=user&a=info&user_id=3545&auth_token=aGVmYZmUm2xqnA%3D%3D&get_user_id=3545
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xian_user` WHERE `id` = '3545' AND `auth_token` = 'aGVmYZmUm2xqnA==' AND `status` = 1 AND `display` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0030s ]
+SQL: SELECT `id`,`nick_name`,`sex`,`chat_level`,`chat_value`,`comment_notify`,`get_gold_notify`,`trace_notify`,`letter_notify`,`top_times`,`top_best`,`description`,`upfile_head`,`province`,`city`,`upfile_head_auth`,`upfile_head_auth_type`,`IM_username`,`like_count`,`like_now_count`,`like_consume_count`,`attention_count`,`fans_count`,0 as is_be_shielded FROM `xian_user` WHERE `id` = '3545' AND `status` = 1 AND `display` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM xian_shop_user_went shop_user_went INNER JOIN xian_shop shop on shop.id = shop_user_went.shop_id  WHERE shop_user_went.user_id = '3545' AND shop.status = 1 AND shop.display = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user_attention` [ RunTime:0.0030s ]
+SQL: SELECT `relation` FROM `xian_user_attention` WHERE `user_id` = '3545' AND `to_user_id` = '3545' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user_blocked` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xian_user_blocked` WHERE `user_id` = '3545' AND `to_user_id` = '3545' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xian_user_blocked` WHERE `user_id` = '3545' AND `to_user_id` = '3545' LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2015-12-29T00:51:04+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=user&a=fans&user_id=3545&auth_token=aGVmYZmUm2xqnA%3D%3D&get_user_id=3545&page_num=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xian_user` WHERE `id` = '3545' AND `auth_token` = 'aGVmYZmUm2xqnA==' AND `status` = 1 AND `display` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_user_attention` [ RunTime:0.0030s ]
+SQL: SELECT user.id as user_id,user.nick_name,user.upfile_head,user.sex,user.like_count as user_like_count FROM xian_user_attention user_attention INNER JOIN xian_user user on user_attention.user_id = user.id  WHERE user_attention.to_user_id = '3545' AND user.status = 1 AND user.display = 1 ORDER BY user_attention.create_time desc LIMIT 0,20   [ RunTime:0.0140s ]
+
+[ 2015-12-29T00:51:05+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=user&a=info&user_id=3545&auth_token=aGVmYZmUm2xqnA%3D%3D&get_user_id=3545
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xian_user` WHERE `id` = '3545' AND `auth_token` = 'aGVmYZmUm2xqnA==' AND `status` = 1 AND `display` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0040s ]
+SQL: SELECT `id`,`nick_name`,`sex`,`chat_level`,`chat_value`,`comment_notify`,`get_gold_notify`,`trace_notify`,`letter_notify`,`top_times`,`top_best`,`description`,`upfile_head`,`province`,`city`,`upfile_head_auth`,`upfile_head_auth_type`,`IM_username`,`like_count`,`like_now_count`,`like_consume_count`,`attention_count`,`fans_count`,0 as is_be_shielded FROM `xian_user` WHERE `id` = '3545' AND `status` = 1 AND `display` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM xian_shop_user_went shop_user_went INNER JOIN xian_shop shop on shop.id = shop_user_went.shop_id  WHERE shop_user_went.user_id = '3545' AND shop.status = 1 AND shop.display = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user_attention` [ RunTime:0.0030s ]
+SQL: SELECT `relation` FROM `xian_user_attention` WHERE `user_id` = '3545' AND `to_user_id` = '3545' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user_blocked` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xian_user_blocked` WHERE `user_id` = '3545' AND `to_user_id` = '3545' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xian_user_blocked` WHERE `user_id` = '3545' AND `to_user_id` = '3545' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2015-12-29T00:51:12+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index_rank&order_type=1&user_id=3545&auth_token=aGVmYZmUm2xqnA%253D%253D&city=%E5%B9%BF%E5%B7%9E%E5%B8%82
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_like` [ RunTime:0.0030s ]
+SQL: SELECT topic.user_id,count(*) as like_count,user.nick_name,user.sex,user.upfile_head as user_upfile_head,user.province,user.city,0 as attention_relation FROM xian_topic_like topic_like INNER JOIN xian_topic topic on topic_like.topic_id = topic.id INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic_like.create_time > 1451318400 AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 GROUP BY user_id ORDER BY like_count desc LIMIT 20   [ RunTime:0.6820s ]
+
+[ 2015-12-29T00:51:14+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index_rank&order_type=1&user_id=3545&auth_token=aGVmYZmUm2xqnA%253D%253D&city=%E5%B9%BF%E5%B7%9E%E5%B8%82
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_like` [ RunTime:0.0040s ]
+SQL: SELECT topic.user_id,count(*) as like_count,user.nick_name,user.sex,user.upfile_head as user_upfile_head,user.province,user.city,0 as attention_relation FROM xian_topic_like topic_like INNER JOIN xian_topic topic on topic_like.topic_id = topic.id INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic_like.create_time > 1451318400 AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 GROUP BY user_id ORDER BY like_count desc LIMIT 20   [ RunTime:0.6610s ]
+
+[ 2015-12-29T00:51:17+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index_rank&order_type=1&user_id=3545&auth_token=aGVmYZmUm2xqnA%253D%253D&city=%E5%B9%BF%E5%B7%9E%E5%B8%82
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_like` [ RunTime:0.0040s ]
+SQL: SELECT topic.user_id,count(*) as like_count,user.nick_name,user.sex,user.upfile_head as user_upfile_head,user.province,user.city,0 as attention_relation FROM xian_topic_like topic_like INNER JOIN xian_topic topic on topic_like.topic_id = topic.id INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic_like.create_time > 1451318400 AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 GROUP BY user_id ORDER BY like_count desc LIMIT 20   [ RunTime:0.6610s ]
+
+[ 2015-12-29T00:51:21+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index_rank&order_type=2&user_id=3545&auth_token=aGVmYZmUm2xqnA%253D%253D&city=%E5%B9%BF%E5%B7%9E%E5%B8%82
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_like` [ RunTime:0.0060s ]
+SQL: SELECT topic.user_id,count(*) as like_count,user.nick_name,user.sex,user.upfile_head as user_upfile_head,user.province,user.city,0 as attention_relation FROM xian_topic_like topic_like INNER JOIN xian_topic topic on topic_like.topic_id = topic.id INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic_like.create_time > 1451232000 AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 GROUP BY user_id ORDER BY like_count desc LIMIT 20   [ RunTime:0.6750s ]
+
+[ 2015-12-29T00:51:22+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index_rank&order_type=2&user_id=3545&auth_token=aGVmYZmUm2xqnA%253D%253D&city=%E5%B9%BF%E5%B7%9E%E5%B8%82
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_like` [ RunTime:0.0040s ]
+SQL: SELECT topic.user_id,count(*) as like_count,user.nick_name,user.sex,user.upfile_head as user_upfile_head,user.province,user.city,0 as attention_relation FROM xian_topic_like topic_like INNER JOIN xian_topic topic on topic_like.topic_id = topic.id INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic_like.create_time > 1451232000 AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 GROUP BY user_id ORDER BY like_count desc LIMIT 20   [ RunTime:0.6610s ]
+
+[ 2015-12-29T00:51:33+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=shop_user_went&a=unread_info&user_id=3545&auth_token=aGVmYZmUm2xqnA%3D%3D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_user_attention` [ RunTime:0.0030s ]
+SQL: SELECT `to_user_id` FROM `xian_user_attention` WHERE `user_id` = '3545'  [ RunTime:0.0000s ]
+NOTIC: [2] implode(): Invalid arguments passed D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\ShopUserWentModel.class.php 第 198 行.
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0040s ]
+SQL: SELECT `shop_user_went_read_time` FROM `xian_user` WHERE `id` = '3545' LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [2] implode(): Invalid arguments passed D:\software\apache24\htdocs\yanzhihui\Public\ThinkPHP\Library\Think\Db\Driver.class.php 第 567 行.
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND `create_time` > '0' LIMIT 1' at line 1
+
+[ 2015-12-29T00:51:36+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index_rank&order_type=2&user_id=3545&auth_token=aGVmYZmUm2xqnA%253D%253D&city=%E5%B9%BF%E5%B7%9E%E5%B8%82
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `xian_topic_like` [ RunTime:0.0030s ]
+SQL: SELECT topic.user_id,count(*) as like_count,user.nick_name,user.sex,user.upfile_head as user_upfile_head,user.province,user.city,0 as attention_relation FROM xian_topic_like topic_like INNER JOIN xian_topic topic on topic_like.topic_id = topic.id INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic_like.create_time > 1451232000 AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 GROUP BY user_id ORDER BY like_count desc LIMIT 20   [ RunTime:0.6640s ]
+
+[ 2015-12-29T00:51:38+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index_attention&page_num=1&user_id=3545&auth_token=aGVmYZmUm2xqnA%3D%3D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xian_user` WHERE `id` = '3545' AND `auth_token` = 'aGVmYZmUm2xqnA==' AND `status` = 1 AND `display` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_user_blocked` [ RunTime:0.0020s ]
+SQL: SELECT `to_user_id` FROM `xian_user_blocked` WHERE `user_id` = '3545'  [ RunTime:0.0000s ]
+SQL: SELECT topic.id,topic.upfile,topic.content,topic.province,topic.city,topic.longitude,topic.latitude,topic.create_time,user.id as user_id,user.nick_name,user.sex,user.upfile_head as user_upfile_head,topic.like_count,user.upfile_head_m as user_upfile_head_m,0 as comment_count,0 as is_like,0 as attention_relation FROM xian_topic topic INNER JOIN xian_user user on topic.user_id = user.id INNER JOIN xian_user_attention user_attention on user_attention.to_user_id = topic.user_id  WHERE user_attention.user_id = '3545' AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 GROUP BY topic.id ORDER BY topic.id desc LIMIT 500   [ RunTime:0.1370s ]
+
+[ 2015-12-29T00:51:39+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=shop&a=index&user_id=3545&auth_token=aGVmYZmUm2xqnA%3D%3D&current_latitude=23.1334294588351&current_longitude=113.3956660348034&page_num=1&user_id=3545
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: SHOW COLUMNS FROM `xian_shop` [ RunTime:0.0040s ]
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1305 FUNCTION yanzhihui.fun_distance does not exist
+
+[ 2015-12-29T00:51:50+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=shop_user_went&a=unread_info&user_id=3545&auth_token=aGVmYZmUm2xqnA%3D%3D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_user_attention` [ RunTime:0.0030s ]
+SQL: SELECT `to_user_id` FROM `xian_user_attention` WHERE `user_id` = '3545'  [ RunTime:0.0010s ]
+NOTIC: [2] implode(): Invalid arguments passed D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\ShopUserWentModel.class.php 第 198 行.
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0040s ]
+SQL: SELECT `shop_user_went_read_time` FROM `xian_user` WHERE `id` = '3545' LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [2] implode(): Invalid arguments passed D:\software\apache24\htdocs\yanzhihui\Public\ThinkPHP\Library\Think\Db\Driver.class.php 第 567 行.
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND `create_time` > '0' LIMIT 1' at line 1
+
+[ 2015-12-29T00:51:56+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index_rank&order_type=2&user_id=3545&auth_token=aGVmYZmUm2xqnA%253D%253D&city=%E5%B9%BF%E5%B7%9E%E5%B8%82
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_like` [ RunTime:0.0020s ]
+SQL: SELECT topic.user_id,count(*) as like_count,user.nick_name,user.sex,user.upfile_head as user_upfile_head,user.province,user.city,0 as attention_relation FROM xian_topic_like topic_like INNER JOIN xian_topic topic on topic_like.topic_id = topic.id INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic_like.create_time > 1451232000 AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 GROUP BY user_id ORDER BY like_count desc LIMIT 20   [ RunTime:0.6490s ]
+
+[ 2015-12-29T00:52:02+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index_rank&order_type=2&user_id=3545&auth_token=aGVmYZmUm2xqnA%253D%253D&city=%E5%B9%BF%E5%B7%9E%E5%B8%82
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `xian_topic_like` [ RunTime:0.0020s ]
+SQL: SELECT topic.user_id,count(*) as like_count,user.nick_name,user.sex,user.upfile_head as user_upfile_head,user.province,user.city,0 as attention_relation FROM xian_topic_like topic_like INNER JOIN xian_topic topic on topic_like.topic_id = topic.id INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic_like.create_time > 1451232000 AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 GROUP BY user_id ORDER BY like_count desc LIMIT 20   [ RunTime:0.6570s ]
+
+[ 2015-12-29T00:53:15+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=shop_user_went&a=unread_info&user_id=3545&auth_token=aGVmYZmUm2xqnA%3D%3D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user_attention` [ RunTime:0.0000s ]
+SQL: SELECT `to_user_id` FROM `xian_user_attention` WHERE `user_id` = '3545'  [ RunTime:0.0000s ]
+NOTIC: [2] implode(): Invalid arguments passed D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\ShopUserWentModel.class.php 第 198 行.
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0156s ]
+SQL: SELECT `shop_user_went_read_time` FROM `xian_user` WHERE `id` = '3545' LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [2] implode(): Invalid arguments passed D:\software\apache24\htdocs\yanzhihui\Public\ThinkPHP\Library\Think\Db\Driver.class.php 第 567 行.
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND `create_time` > '0' LIMIT 1' at line 1
+
+[ 2015-12-29T00:53:15+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=shop_user_went&a=unread_info&user_id=3545&auth_token=aGVmYZmUm2xqnA%3D%3D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.015600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015600s ]
+SQL: SHOW COLUMNS FROM `xian_shop_user_went` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user_attention` [ RunTime:0.0000s ]
+SQL: SELECT `to_user_id` FROM `xian_user_attention` WHERE `user_id` = '3545'  [ RunTime:0.0000s ]
+NOTIC: [2] implode(): Invalid arguments passed D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\ShopUserWentModel.class.php 第 198 行.
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0156s ]
+SQL: SELECT `shop_user_went_read_time` FROM `xian_user` WHERE `id` = '3545' LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [2] implode(): Invalid arguments passed D:\software\apache24\htdocs\yanzhihui\Public\ThinkPHP\Library\Think\Db\Driver.class.php 第 567 行.
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND `create_time` > '0' LIMIT 1' at line 1
+
+[ 2015-12-29T00:53:15+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index&page_num=1&user_id=3545&auth_token=aGVmYZmUm2xqnA%253D%253D&user_id=3545
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user_blocked` [ RunTime:0.0000s ]
+SQL: SELECT `to_user_id` FROM `xian_user_blocked` WHERE `user_id` = '3545'  [ RunTime:0.0000s ]
+SQL: SELECT topic.id,topic.upfile,topic.content,topic.province,topic.city,topic.longitude,topic.latitude,topic.create_time,user.id as user_id,user.nick_name,user.sex,user.top_times,user.top_best,topic.like_count,user.upfile_head as user_upfile_head,user.upfile_head_m as user_upfile_head_m,0 as comment_count,0 as is_like,0 as attention_relation FROM xian_topic topic INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 ORDER BY topic.id desc LIMIT 500   [ RunTime:0.0000s ]
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 97 行.
+SQL: SHOW COLUMNS FROM `xian_topic_like` [ RunTime:0.0000s ]
+SQL: SELECT `topic_id` FROM `xian_topic_like` WHERE `user_id` = '3545' AND `topic_id` IN ('26948','26947','26946','26945','26944','26943','26942','26941','26940','26939')  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user_attention` [ RunTime:0.0000s ]
+SQL: SELECT `to_user_id`,`relation` FROM `xian_user_attention` WHERE `user_id` = '3545'  [ RunTime:0.0000s ]
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 142 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 142 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 142 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 142 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 142 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 142 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 142 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 142 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 142 行.
+NOTIC: [2] in_array() expects parameter 2 to be array, null given D:\software\apache24\htdocs\yanzhihui\Application\Api\Model\TopicModel.class.php 第 142 行.
+SQL: SELECT topic_like.topic_id,topic_like.user_id,user.upfile_head,user.upfile_head_m FROM xian_topic_like topic_like INNER JOIN xian_user user on topic_like.user_id = user.id  WHERE topic_like.topic_id IN ('26948','26947','26946','26945','26944','26943','26942','26941','26940','26939') AND user.status = 1 AND user.display = 1 ORDER BY topic_like.create_time desc  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`like_count`,`comment_count` FROM `xian_topic` WHERE `id` IN ('26948','26947','26946','26945','26944','26943','26942','26941','26940','26939')  [ RunTime:0.0000s ]
+
+[ 2015-12-29T00:53:18+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index_attention&page_num=1&user_id=3545&auth_token=aGVmYZmUm2xqnA%3D%3D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `xian_user` [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `xian_user` WHERE `id` = '3545' AND `auth_token` = 'aGVmYZmUm2xqnA==' AND `status` = 1 AND `display` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_user_blocked` [ RunTime:0.0156s ]
+SQL: SELECT `to_user_id` FROM `xian_user_blocked` WHERE `user_id` = '3545'  [ RunTime:0.0000s ]
+SQL: SELECT topic.id,topic.upfile,topic.content,topic.province,topic.city,topic.longitude,topic.latitude,topic.create_time,user.id as user_id,user.nick_name,user.sex,user.upfile_head as user_upfile_head,topic.like_count,user.upfile_head_m as user_upfile_head_m,0 as comment_count,0 as is_like,0 as attention_relation FROM xian_topic topic INNER JOIN xian_user user on topic.user_id = user.id INNER JOIN xian_user_attention user_attention on user_attention.to_user_id = topic.user_id  WHERE user_attention.user_id = '3545' AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 GROUP BY topic.id ORDER BY topic.id desc LIMIT 500   [ RunTime:0.1404s ]
+
+[ 2015-12-29T00:53:20+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index_rank&order_type=1&user_id=3545&auth_token=aGVmYZmUm2xqnA%253D%253D&city=%E5%B9%BF%E5%B7%9E%E5%B8%82
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.015600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015600s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_like` [ RunTime:0.0000s ]
+SQL: SELECT topic.user_id,count(*) as like_count,user.nick_name,user.sex,user.upfile_head as user_upfile_head,user.province,user.city,0 as attention_relation FROM xian_topic_like topic_like INNER JOIN xian_topic topic on topic_like.topic_id = topic.id INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic_like.create_time > 1451318400 AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 GROUP BY user_id ORDER BY like_count desc LIMIT 20   [ RunTime:0.6396s ]
+
+[ 2015-12-29T00:53:22+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index_rank&order_type=1&user_id=3545&auth_token=aGVmYZmUm2xqnA%253D%253D&city=%E5%B9%BF%E5%B7%9E%E5%B8%82
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015600s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_like` [ RunTime:0.0000s ]
+SQL: SELECT topic.user_id,count(*) as like_count,user.nick_name,user.sex,user.upfile_head as user_upfile_head,user.province,user.city,0 as attention_relation FROM xian_topic_like topic_like INNER JOIN xian_topic topic on topic_like.topic_id = topic.id INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic_like.create_time > 1451318400 AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 GROUP BY user_id ORDER BY like_count desc LIMIT 20   [ RunTime:0.6240s ]
+
+[ 2015-12-29T00:53:27+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index_rank&order_type=2&user_id=3545&auth_token=aGVmYZmUm2xqnA%253D%253D&city=%E5%B9%BF%E5%B7%9E%E5%B8%82
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_like` [ RunTime:0.0000s ]
+SQL: SELECT topic.user_id,count(*) as like_count,user.nick_name,user.sex,user.upfile_head as user_upfile_head,user.province,user.city,0 as attention_relation FROM xian_topic_like topic_like INNER JOIN xian_topic topic on topic_like.topic_id = topic.id INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic_like.create_time > 1451232000 AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 GROUP BY user_id ORDER BY like_count desc LIMIT 20   [ RunTime:0.6396s ]
+
+[ 2015-12-29T00:53:30+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index_rank&order_type=4&user_id=3545&auth_token=aGVmYZmUm2xqnA%253D%253D&city=%E5%B9%BF%E5%B7%9E%E5%B8%82
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_like` [ RunTime:0.0000s ]
+SQL: SELECT topic.user_id,count(*) as like_count,user.nick_name,user.sex,user.upfile_head as user_upfile_head,user.province,user.city,0 as attention_relation FROM xian_topic_like topic_like INNER JOIN xian_topic topic on topic_like.topic_id = topic.id INNER JOIN xian_user user on topic.user_id = user.id  WHERE user.city = '广州市' AND topic_like.create_time > 1451318400 AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 GROUP BY user_id ORDER BY like_count desc LIMIT 20   [ RunTime:0.4524s ]
+
+[ 2015-12-29T00:53:32+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index_rank&order_type=5&user_id=3545&auth_token=aGVmYZmUm2xqnA%253D%253D&city=%E5%B9%BF%E5%B7%9E%E5%B8%82
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_like` [ RunTime:0.0000s ]
+SQL: SELECT topic.user_id,count(*) as like_count,user.nick_name,user.sex,user.upfile_head as user_upfile_head,user.province,user.city,0 as attention_relation FROM xian_topic_like topic_like INNER JOIN xian_topic topic on topic_like.topic_id = topic.id INNER JOIN xian_user user on topic.user_id = user.id  WHERE user.city = '广州市' AND topic_like.create_time > 1451232000 AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 GROUP BY user_id ORDER BY like_count desc LIMIT 20   [ RunTime:0.4680s ]
+
+[ 2015-12-29T00:53:36+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index_rank&order_type=1&user_id=3545&auth_token=aGVmYZmUm2xqnA%253D%253D&city=%E5%B9%BF%E5%B7%9E%E5%B8%82
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_like` [ RunTime:0.0000s ]
+SQL: SELECT topic.user_id,count(*) as like_count,user.nick_name,user.sex,user.upfile_head as user_upfile_head,user.province,user.city,0 as attention_relation FROM xian_topic_like topic_like INNER JOIN xian_topic topic on topic_like.topic_id = topic.id INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic_like.create_time > 1451318400 AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 GROUP BY user_id ORDER BY like_count desc LIMIT 20   [ RunTime:0.6240s ]
+
+[ 2015-12-29T00:53:41+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index_rank&order_type=2&user_id=3545&auth_token=aGVmYZmUm2xqnA%253D%253D&city=%E5%B9%BF%E5%B7%9E%E5%B8%82
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_like` [ RunTime:0.0000s ]
+SQL: SELECT topic.user_id,count(*) as like_count,user.nick_name,user.sex,user.upfile_head as user_upfile_head,user.province,user.city,0 as attention_relation FROM xian_topic_like topic_like INNER JOIN xian_topic topic on topic_like.topic_id = topic.id INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic_like.create_time > 1451232000 AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 GROUP BY user_id ORDER BY like_count desc LIMIT 20   [ RunTime:0.6084s ]
+
+[ 2015-12-29T00:54:22+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index_rank&order_type=2&user_id=3545&auth_token=aGVmYZmUm2xqnA%253D%253D&city=%E5%B9%BF%E5%B7%9E%E5%B8%82
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_like` [ RunTime:0.0000s ]
+SQL: SELECT topic.user_id,count(*) as like_count,user.nick_name,user.sex,user.upfile_head as user_upfile_head,user.province,user.city,0 as attention_relation FROM xian_topic_like topic_like INNER JOIN xian_topic topic on topic_like.topic_id = topic.id INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic_like.create_time > 1451232000 AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 GROUP BY user_id ORDER BY like_count desc LIMIT 20   [ RunTime:0.6240s ]
+
+[ 2015-12-29T00:54:40+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index_rank&order_type=2&user_id=3545&auth_token=aGVmYZmUm2xqnA%253D%253D&city=%E5%B9%BF%E5%B7%9E%E5%B8%82
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_like` [ RunTime:0.0000s ]
+SQL: SELECT topic.user_id,count(*) as like_count,user.nick_name,user.sex,user.upfile_head as user_upfile_head,user.province,user.city,0 as attention_relation FROM xian_topic_like topic_like INNER JOIN xian_topic topic on topic_like.topic_id = topic.id INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic_like.create_time > 1451232000 AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 GROUP BY user_id ORDER BY like_count desc LIMIT 20   [ RunTime:0.6240s ]
+
+[ 2015-12-29T00:55:30+08:00 ] 192.168.0.103 /yanzhihui/?m=api&c=topic&a=index_rank&order_type=2&user_id=3545&auth_token=aGVmYZmUm2xqnA%253D%253D&city=%E5%B9%BF%E5%B7%9E%E5%B8%82
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `xian_topic` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `xian_topic_like` [ RunTime:0.0000s ]
+SQL: SELECT topic.user_id,count(*) as like_count,user.nick_name,user.sex,user.upfile_head as user_upfile_head,user.province,user.city,0 as attention_relation FROM xian_topic_like topic_like INNER JOIN xian_topic topic on topic_like.topic_id = topic.id INNER JOIN xian_user user on topic.user_id = user.id  WHERE topic_like.create_time > 1451232000 AND topic.status = 1 AND topic.display = 1 AND user.status = 1 AND user.display = 1 GROUP BY user_id ORDER BY like_count desc LIMIT 20   [ RunTime:0.6240s ]
+

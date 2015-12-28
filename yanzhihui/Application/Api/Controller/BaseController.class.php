@@ -52,4 +52,12 @@ class BaseController extends Controller {
         $path = 'Images/' . $name;
         move_upload_file($path, $upfile);
     }
+
+    
+
+
+
+
+
+
 }

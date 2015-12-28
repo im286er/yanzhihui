@@ -394,7 +394,23 @@ class UserModel extends CommonModel {
                 $data[$v] = I('post.' . $v);
             }
             if ($upfile_head) {
-                $data['upfile_head'] = get_upfile($upfile_head);
+                $file_name = get_upfile($upfile_head);
+                $data['upfile_head'] = $file_name;
+                
+                
+                $file_name_m = "";
+                $strArr = explode('/', $file_name);
+                for ($i= 0;$i< count($strArr); $i++){
+                    if($i == (count($strArr)-1)){
+                        $file_name_m = $file_name_m . 'm' . $strArr[$i] . '/';
+                    }else{
+                        $file_name_m =  $file_name_m . $strArr[$i] . '/';
+                    }
+                }
+                $file_name_m = substr($file_name_m, 0, -1);
+                $data['upfile_head_m'] = $file_name_m;
+
+
             }
             $where['id'] = array('EQ', $user_id);
             $result = $this->where($where)->save($data);

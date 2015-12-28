@@ -115,7 +115,7 @@ class ShopModel extends CommonModel {
 
             /* 查询去向列表 */
             $list_user_went_conversion = array();
-            $field_user_went = 'shop_user_went.shop_id,shop_user_went.user_id,user.upfile_head';
+            $field_user_went = 'shop_user_went.shop_id,shop_user_went.user_id,user.upfile_head,user.upfile_head_m';
             $where_user_went['shop_user_went.shop_id'] = array('IN', implode(',', $list_result_shop_id));
             $where_user_went['user.status'] = array('EQ', 1);
             $where_user_went['user.display'] = array('EQ', 1);
@@ -133,7 +133,9 @@ class ShopModel extends CommonModel {
                 if ($v['upfile_head'] && !strstr($v['upfile_head'], 'http://')) {
                     $v['upfile_head'] = C('APP_URL') . '/Uploads/Images/User/' . $v['upfile_head'];
                 }
-
+                if ($v['upfile_head_m'] && !strstr($v['upfile_head_m'], 'http://')) {
+                    $v['upfile_head_m'] = C('APP_URL') . '/Uploads/Images/User/' . $v['upfile_head_m'];
+                }
                 $list_user_went_conversion[$v['shop_id']][] = $v;
             }
             foreach ($list_user_went_conversion as $k => $v) {

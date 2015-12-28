@@ -57,7 +57,7 @@ class TopicModel extends CommonModel {
         } else {
             /* 查询条件 */
             $field = 'topic.id,topic.upfile,topic.content,topic.province,topic.city,topic.longitude,topic.latitude,topic.create_time,
-                      user.id as user_id,user.nick_name,user.sex,user.top_times,user.top_best,user.upfile_head as user_upfile_head,topic.like_count,
+                      user.id as user_id,user.nick_name,user.sex,user.top_times,user.top_best,topic.like_count,user.upfile_head as user_upfile_head,user.upfile_head_m as user_upfile_head_m,
                       0 as comment_count,0 as is_like,0 as attention_relation';
             $where['topic.status'] = array('EQ', 1);
             $where['topic.display'] = array('EQ', 1);
@@ -120,6 +120,9 @@ class TopicModel extends CommonModel {
                 if ($v['user_upfile_head'] && !strstr($v['user_upfile_head'], 'http://')) {
                     $list_result_page[$k]['user_upfile_head'] = C('APP_URL') . '/Uploads/Images/User/' . $v['user_upfile_head'];
                 }
+                if ($v['user_upfile_head_m'] && !strstr($v['user_upfile_head_m'], 'http://')) {
+                    $list_result_page[$k]['user_upfile_head_m'] = C('APP_URL') . '/Uploads/Images/User/' . $v['user_upfile_head_m'];
+                }
                 /* 默认值 */
                 $list_result_page[$k]['list_like'] = array();
             }
@@ -150,7 +153,7 @@ class TopicModel extends CommonModel {
 
             /* 查询相应点赞 */
             $list_topic_conversion = array();
-            $field_user_list = 'topic_like.topic_id,topic_like.user_id,user.upfile_head';
+            $field_user_list = 'topic_like.topic_id,topic_like.user_id,user.upfile_head,user.upfile_head_m';
             $where_user_list['topic_like.topic_id'] = array('IN', implode(',', $list_result_topic_id));
             $where_user_list['user.status'] = array('EQ', 1);
             $where_user_list['user.display'] = array('EQ', 1);
@@ -167,6 +170,9 @@ class TopicModel extends CommonModel {
                 /* 读取头像 */
                 if ($v['upfile_head'] && !strstr($v['upfile_head'], 'http://')) {
                     $v['upfile_head'] = C('APP_URL') . '/Uploads/Images/User/' . $v['upfile_head'];
+                }
+                if ($v['upfile_head_m'] && !strstr($v['upfile_head_m'], 'http://')) {
+                    $v['upfile_head_m'] = C('APP_URL') . '/Uploads/Images/User/' . $v['upfile_head_m'];
                 }
                 $list_topic_conversion[$v['topic_id']][] = $v;
             }
@@ -254,7 +260,7 @@ class TopicModel extends CommonModel {
         } else {
             /* 查询条件 */
             $field = 'topic.id,topic.upfile,topic.content,topic.province,topic.city,topic.longitude,topic.latitude,topic.create_time,
-                  user.id as user_id,user.nick_name,user.sex,user.upfile_head as user_upfile_head,topic.like_count,
+                  user.id as user_id,user.nick_name,user.sex,user.upfile_head as user_upfile_head,topic.like_count,user.upfile_head_m as user_upfile_head_m,
                   0 as comment_count,0 as is_like,0 as attention_relation';
             $where['user_attention.user_id'] = array('EQ', $user_id);
             $where['topic.status'] = array('EQ', 1);
@@ -309,6 +315,10 @@ class TopicModel extends CommonModel {
                 if ($v['user_upfile_head'] && !strstr($v['user_upfile_head'], 'http://')) {
                     $list_result_page[$k]['user_upfile_head'] = C('APP_URL') . '/Uploads/Images/User/' . $v['user_upfile_head'];
                 }
+                /* 缩略图 */
+                if ($v['user_upfile_head_m'] && !strstr($v['user_upfile_head_m'], 'http://')) {
+                    $list_result_page[$k]['user_upfile_head_m'] = C('APP_URL') . '/Uploads/Images/User/' . $v['user_upfile_head_m'];
+                }
 
                 /* 默认值 */
                 $list_result_page[$k]['list_like'] = array();
@@ -337,7 +347,7 @@ class TopicModel extends CommonModel {
 
             /* 查询相应点赞 */
             $list_topic_conversion = array();
-            $field_user_list = 'topic_like.topic_id,topic_like.user_id,user.upfile_head';
+            $field_user_list = 'topic_like.topic_id,topic_like.user_id,user.upfile_head,user.upfile_head_m';
             $where_user_list['topic_like.topic_id'] = array('IN', implode(',', $list_result_topic_id));
             $where_user_list['user.status'] = array('EQ', 1);
             $where_user_list['user.display'] = array('EQ', 1);
@@ -354,6 +364,10 @@ class TopicModel extends CommonModel {
                 /* 读取头像 */
                 if ($v['upfile_head'] && !strstr($v['upfile_head'], 'http://')) {
                     $v['upfile_head'] = C('APP_URL') . '/Uploads/Images/User/' . $v['upfile_head'];
+                }
+                /* 缩略图 */
+                if ($v['upfile_head_m'] && !strstr($v['upfile_head_m'], 'http://')) {
+                    $v['upfile_head_m'] = C('APP_URL') . '/Uploads/Images/User/' . $v['upfile_head_m'];
                 }
                 $list_topic_conversion[$v['topic_id']][] = $v;
             }
@@ -537,7 +551,7 @@ class TopicModel extends CommonModel {
         } else {
             /* 查询条件 */
             $field = 'topic.upfile,topic.content,topic.province,topic.city,topic.longitude,topic.latitude,topic.comment_count,topic.create_time,
-                      user.id as user_id,user.nick_name,user.top_times,user.top_best,user.chat_level,user.sex,user.upfile_head as user_upfile_head,0 as is_be_shielded';
+                      user.id as user_id,user.nick_name,user.top_times,user.top_best,user.chat_level,user.sex,user.upfile_head as user_upfile_head,0 as is_be_shielded,user.upfile_head_m as user_upfile_head_m';
             $where['topic.id'] = array('EQ', $topic_id);
             $where['topic.status'] = array('EQ', 1);
             $where['topic.display'] = array('EQ', 1);
@@ -554,6 +568,10 @@ class TopicModel extends CommonModel {
                 /* 读取用户头像 */
                 if ($data['user_upfile_head'] && !strstr($data['user_upfile_head'], 'http://')) {
                     $data['user_upfile_head'] = C('APP_URL') . '/Uploads/Images/User/' . $data['user_upfile_head'];
+                }
+                /* 读取用户头像 */
+                if ($data['user_upfile_head_m'] && !strstr($data['user_upfile_head_m'], 'http://')) {
+                    $data['user_upfile_head_m'] = C('APP_URL') . '/Uploads/Images/User/' . $data['user_upfile_head_m'];
                 }
                 /* 读取图片 */
                 if ($data['upfile']) {
@@ -584,7 +602,7 @@ class TopicModel extends CommonModel {
             $data['like_count'] = $like_count;
 
             /* 查询点赞 */
-            $fieldLike = 'topic_like.user_id,user.upfile_head';
+            $fieldLike = 'topic_like.user_id,user.upfile_head,user.upfile_head_m';
             $whereLike['topic_like.topic_id'] = array('EQ', $topic_id);
             $whereLike['user.status'] = array('EQ', 1);
             $whereLike['user.display'] = array('EQ', 1);
@@ -600,6 +618,9 @@ class TopicModel extends CommonModel {
             foreach ($listLike as $k => $v) {
                 if ($v['upfile_head'] && !strstr($v['upfile_head'], 'http://')) {
                     $listLike[$k]['upfile_head'] = C('APP_URL') . '/Uploads/Images/User/' . $v['upfile_head'];
+                }
+                if ($v['upfile_head_m'] && !strstr($v['upfile_head_m'], 'http://')) {
+                    $listLike[$k]['upfile_head_m'] = C('APP_URL') . '/Uploads/Images/User/' . $v['upfile_head_m'];
                 }
             }
             $data['list_like'] = $listLike;

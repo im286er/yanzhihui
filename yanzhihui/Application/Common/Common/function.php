@@ -309,6 +309,12 @@ function move_upload_file($path, $upfile = NULL) {
             $file = './Uploads/Temp/' . $v; //临时文件
             if (is_file($file)) {
                 $newFile = $path . $v; //新文件
+                $newFile_m = $path . 'm' . $v; 
+
+                $image = new \Think\Image();
+                $image->open($file);
+                $image->thumb(100, 100)->save($newFile_m);
+
                 if (rename($file, $newFile)) {
                     /* 记录文件移动日志 */
                     logs_upload_file('文件移动成功', $newFile);
@@ -320,6 +326,8 @@ function move_upload_file($path, $upfile = NULL) {
         }
     }
 }
+
+
 
 /**
  * 获取上传地址 get_upfile
