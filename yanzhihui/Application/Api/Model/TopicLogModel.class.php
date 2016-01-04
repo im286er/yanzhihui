@@ -77,7 +77,8 @@ class TopicLogModel extends CommonModel {
         $user_id = I('get.user_id');
         $model = M('TopicLog');
         $where['user_id'] = array('EQ',$user_id);
-        $list = $model->where($where)->select();
+        $order = 'create_time desc';
+        $list = $model->where($where)->order($order)->select();
         $_list = array();
         if(!empty($list)){
             /* 遍历每个数组 */
