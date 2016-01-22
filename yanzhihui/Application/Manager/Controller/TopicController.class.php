@@ -14,11 +14,22 @@ class TopicController extends BaseController {
         $getNickName = I('get.nick_name');
         $getStartTime = I('get.startTime');
         $getEndTime = I('get.endTime');
+		$getUserId = I('get.user_id');
+		$getCity = I('get.city');
+		
         /* 查询条件 */
         $field = 'topic.id,topic.upfile,topic.content,topic.province,topic.city,topic.like_count,topic.comment_count,topic.status,topic.create_time,
-                  user.nick_name as user_nick_name';
+                  user.nick_name as user_nick_name,topic.top_,topic.autodown';
         $where['topic.display'] = array('EQ', 1);
         /* 搜索条件 */
+
+		if($getCity){
+			$where['topic.city'] = array('LIKE', '%' . $getCity . '%');
+		}
+
+		if ($getUserId) {
+            $where['topic.user_id'] = array('EQ', $getUserId);
+        }
         if ($getTitle) {
             $where['topic.content'] = array('LIKE', '%' . $getTitle . '%');
         }
@@ -33,7 +44,7 @@ class TopicController extends BaseController {
         }
 
         /* 查询排序 */
-        $order = 'topic.id desc';
+        $order = 'topic.top_ desc ,topic.id desc';
         /* 分页查询 */
         $count = M($name)
             ->alias('topic')
@@ -115,9 +126,39 @@ class TopicController extends BaseController {
      */
     protected function _after_do_delete() {
         $id = I('post.itemID');
-        $field = 'id,upfile,user_id';
+        $field = 'id,upfile,user_id,like_count';
         $where['id'] = array('EQ', $id);
         $data = M('Topic')->field($field)->where($where)->find();
+
+		$userInfo = M('User')->field('like_count,like_now_count,topic_count,topic_like_count,topic_comment_count')->where(array('id' => $data['user_id']))->find();
+		if ($userInfo['like_count'] >= $data['like_count'] && $userInfo['like_now_count'] >= $data['like_count']) {
+
+			M('Topic_comment')->where(array('topic_id' => $id))->setField('display', 0); //删除当前话题的评论
+			/* User表减去点数*/
+			$user_where['like_count'] = $userInfo['like_count'] - $data['like_count']; //用户总颜值
+			$user_where['like_now_count'] = $userInfo['like_now_count'] - $data['like_count'];   //当前用户颜值
+			$user_where['topic_count'] = $userInfo['topic_count'] - 1; //用户话题总数-1
+			$topiclike_count = M('Topic_like')->where(array('topic_id' => $id))->count();
+			$topic_comment_count = M('Topic_comment')->where(array('topic_id' => $id))->count();
+			$user_where['topic_like_count'] = $userInfo['topic_like_count'] - $topiclike_count;//话题总赞数
+			$user_where['topic_comment_count'] = $userInfo['topic_comment_count'] - $topic_comment_count;      //总评论数
+			$bool = M('User')->where(array('id' => $data['user_id']))->save($user_where);
+							
+		} else { //话题颜值大于用户当前颜值数
+			
+			 M('Topic_comment')->where(array('topic_id' => $id))->setField('display', 0); //删除当前话题的评论
+			/* User表减去点数*/
+			$user_where['like_count'] = $userInfo['like_count'] - $data['like_count']; //用户总颜值
+			$user_where['like_now_count'] = 0;   //当前用户颜值
+			$user_where['topic_count'] = $userInfo['topic_count'] - 1; //用户话题总数-1
+			$topiclike_count = M('Topic_like')->where(array('topic_id' => $id))->count();
+			$topic_comment_count = M('Topic_comment')->where(array('topic_id' => $id))->count();
+			$user_where['topic_like_count'] = $userInfo['topic_like_count'] - $topiclike_count;//话题总赞数
+			$user_where['topic_comment_count'] = $userInfo['topic_comment_count'] - $topic_comment_count;      //总评论数
+			$bool = M('User')->where(array('id' => $data['user_id']))->save($user_where);
+
+		}
+
 
         /* 发送IM 信息 */
         import('Api.ORG.EasemobIMSDK');
@@ -133,4 +174,33 @@ class TopicController extends BaseController {
         );
         $rest->hx_send($sender, $receiver, $msg, $ext);
     }
+
+	/**
+	 * 设置置顶
+	 */
+	public function top_Up() {
+        $this->do_top_();
+    }
+
+	/**
+	 * 取消置顶
+	 */
+	public function top_Down() {
+        $this->do_top_('',0);
+    }
+
+	/**
+	 * 设置置顶自动下架
+	 */
+	public function top_Autoup() {
+        $this->do_autodown();
+    }
+
+	/**
+	 * 取消置顶自动下架
+	 */
+	public function top_Autodown() {
+        $this->do_autodown('',0);
+    }
+
 }

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>{$Think.lang.TPL_welcome}</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="__PUBLIC____MODULE__/styles/ruis-common.css">
+</head>
+<body>
+<div class="dMain">
+    <div class="ifrTitle yh">
+        <div class="mark">每周用户颜币分布报表</div>
+    </div>
+
+    <div class="dSearch">
+        <form id="dSearch" autocomplete="off">
+            <ul>
+                <li class="liTit">开始日期</li>
+                <li><input id="startdate" class="inputTxt w190 WdatePicker" name="startdate" type="text" value="{$Think.get.startdate}"></li>
+                <li class="liTit">结束日期</li>
+                <li><input id="enddate" class="inputTxt w190 WdatePicker" name="enddate" type="text" value="{$Think.get.enddate}"></li>
+            </ul>
+            
+            <ul class="operateBtnBg">
+                <li><a id="searchBtn" class="aButtonC w110 ml10 fl" href="javascript:void(0)">{$Think.lang.Tpl_btn_search}</a></li>
+            </ul>
+        </form>
+    </div>
+
+    <form id="form" method="post">
+        <input id="itemID" name="itemID" type="hidden">
+        <div class="dList">
+            <ul class="dListMark">
+                <li class="bgNone" data-width="5"></li>
+                <li class="tal" data-width="20" data-paddingL="1">统计日期</li>
+                <li class="tal" data-width="18" data-paddingL="1">分布范围</li>
+                <li class="tal" data-width="12" data-paddingL="1">用户数量</li>
+				<li class="tal" data-width="12" data-paddingL="1">总用户数</li>
+                <li data-width="6">百分比</li>              
+            </ul>
+            <div class="dSlide">
+                <volist name="list" id="vo">
+                    <ul>
+                        <li class="tal" data-width="5" data-paddingL="2"></li>
+                        
+                        <li class="tal" data-width="20" data-paddingL="1">{$vo.eventdate}</li>
+                        <li class="tal" data-width="18" data-paddingL="1">{$vo.level_type}</li>
+                        <li data-width="12">{$vo.nums}</li>
+						<li data-width="12">{$vo.total_nums}</li>
+                        <li data-width="6">{$vo.present} %</li>
+                       
+                    </ul>
+                </volist>
+            </div>
+        </div>
+    </form>
+
+    <notempty name="list">
+        <div class="dPageBox">
+            
+            <div class="dPage fr">
+                <form id="formPage">
+                    {$page}
+                    <notempty name="page">
+                        <em>到第<input name="p" type="text">页</em>
+                        <a class="aSubmit" href="javascript:void(0)">{$Think.lang.TPL_btn_confirm}</a>
+                        <input name="startdate" type="hidden" value="{$Think.get.startdate}">
+						<input name="enddate" type="hidden" value="{$Think.get.enddate}">
+                                             
+                    </notempty>
+                </form>
+            </div>
+        </div>
+    </notempty>
+</div>
+
+<!-- JavaScript -->
+<script src="__PUBLIC__/Static/scripts/jquery-1.11.3.min.js"></script>
+<script src="__PUBLIC____MODULE__/scripts/ruis-common.js"></script>
+</body>
+</html>

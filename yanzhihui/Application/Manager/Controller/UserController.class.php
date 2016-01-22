@@ -12,10 +12,15 @@ class UserController extends BaseController {
         $getTitle = I('get.title');
         $getStartTime = I('get.startTime');
         $getEndTime = I('get.endTime');
+		$getCity = I('get.city');
         /* 查询列表 */
         if ($getTitle) {
             $where['nick_name'] = array('LIKE', '%' . $getTitle . '%');
         }
+
+		if($getCity){
+		   $where['city'] = array('LIKE', '%' . $getCity . '%');
+		}
         if ($getStartTime) {
             $where['create_time'] = array('EGT', strtotime($getStartTime));
             if ($getStartTime && $getEndTime) {
@@ -35,9 +40,9 @@ class UserController extends BaseController {
     }
 
     /**
-     * 修改模板 edit
+     * 修改模板 read
      */
-    public function edit() {
+    public function read() {
         if (IS_POST) {
             $name = CONTROLLER_NAME;
             $vo = $this->do_edit($name);
@@ -78,4 +83,13 @@ class UserController extends BaseController {
     public function delete() {
         $this->do_delete();
     }
+
+	  /**
+     * 新增用户
+     */
+	public function add() {
+        $this->do_add();
+    }
+	 
+
 }

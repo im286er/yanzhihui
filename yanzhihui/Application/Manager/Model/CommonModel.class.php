@@ -177,4 +177,80 @@ class CommonModel extends Model {
         }
         return false;
     }
+
+
+	/**
+     * 设置置顶 doTop
+     * @param array $condition
+     * @param string $status
+     * @return bool|int
+     */
+    public function do_top_($condition = array(), $statusUp) {
+        $result = 0;
+        $top_ = 1;		
+
+        if (IS_POST && IS_AJAX) {
+            $id = I('post.itemID');
+            if ($id || $condition && in_array($this->getPk(), array_keys($condition))) {
+                $where['id'] = array('IN', $id);
+                //$where['top_'] = array('EQ', 0);
+                $where['display'] = array('EQ', 1);
+                if (!$statusUp) {
+                    $top_ = 0;
+                    //$where['top_'] = array('EQ', 1);
+					$where['display'] = array('EQ', 1);
+                }
+                $where = array_merge($where, $condition);
+                /* 捕获异常 */
+                try {
+                    $result = $this->where($where)->setField('top_', $top_);
+					//logs_system_error(json_encode($where).'|'.$top_.'|'.$this->getLastSql());
+					//logs_system_error();
+                } catch (\Exception $e) {
+                    $remark = $e->getMessage();
+                    /* 记录操作异常日志 */
+                    logs_system_error($remark);
+                }
+            }
+        }
+        return $result;
+    }
+
+
+	/**
+     * 设置置顶自动下架 do_autodown
+     * @param array $condition
+     * @param string $status
+     * @return bool|int
+     */
+    public function do_autodown($condition = array(), $statusUp) {
+        $result = 0;
+        $top_ = 1;		
+
+        if (IS_POST && IS_AJAX) {
+            $id = I('post.itemID');
+            if ($id || $condition && in_array($this->getPk(), array_keys($condition))) {
+                $where['id'] = array('IN', $id);
+                //$where['top_'] = array('EQ', 0);
+                $where['display'] = array('EQ', 1);
+                if (!$statusUp) {
+                    $top_ = 0;
+                    //$where['top_'] = array('EQ', 1);
+					$where['display'] = array('EQ', 1);
+                }
+                $where = array_merge($where, $condition);
+                /* 捕获异常 */
+                try {
+                    $result = $this->where($where)->setField('autodown', $top_);
+					logs_system_error(json_encode($where).'|'.$top_.'|'.$this->getLastSql());
+					//logs_system_error();
+                } catch (\Exception $e) {
+                    $remark = $e->getMessage();
+                    /* 记录操作异常日志 */
+                    logs_system_error($remark);
+                }
+            }
+        }
+        return $result;
+    }
 }

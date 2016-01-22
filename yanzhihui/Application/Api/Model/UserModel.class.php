@@ -170,8 +170,8 @@ class UserModel extends CommonModel {
      * 查询用户推送状态 find_push_status:$IM_user_id->用户id，$type->1评论2得到颜币3去向4私信
      */
     public function find_push_status($IM_user_id,$type) {
-        //$where['id'] = array('EQ', $IM_user_id);
-        $where['IM_uuid'] = array('EQ', $IM_user_id);
+        $where['id'] = array('EQ', $IM_user_id);
+        //$where['IM_uuid'] = array('EQ', $IM_user_id);
         $field = '';
         if($type == 1){
             $field = 'comment_notify';
@@ -194,7 +194,7 @@ class UserModel extends CommonModel {
      * 注册用户 do_register
      */
     public function do_register() {
-        //if ($this->create('', self::MODEL_REGISTER)) {
+        if ($this->create('', self::MODEL_REGISTER)) {
             /* 本地注册用户 */
             $data['telephone'] = I('post.telephone');
             $data['password'] = MD5(I('post.password'));
@@ -222,14 +222,14 @@ class UserModel extends CommonModel {
                     $where_IM_info['id'] = array('EQ', $result);
                     $IM_result_info = $this->where($where_IM_info)->save($IM_data_info);
                     if ($IM_result_info) {
-//                        /* 默认关注官方账号 */
-//                        $data_attention['user_id'] = $result;
-//                        $data_attention['to_user_id'] = 1;
-//                        $data_attention['create_time'] = NOW_TIME;
-//                        M('UserAttention')->add($data_attention);
-//
-//                        /* 注册成功累加小颜账号粉丝 */
-//                        $this->where('id=1')->setInc('fans_count');
+                        /* 默认关注官方账号 */
+                        $data_attention['user_id'] = $result;
+                        $data_attention['to_user_id'] = 1;
+                        $data_attention['create_time'] = NOW_TIME;
+                        M('UserAttention')->add($data_attention);
+
+                        /* 注册成功累加小颜账号粉丝 */
+                        $this->where('id=1')->setInc('fans_count');
 
                         /* 成功推送IM */
                         import('Api.ORG.EasemobIMSDK');
@@ -245,7 +245,7 @@ class UserModel extends CommonModel {
                     }
                 }
             }
-        //}
+        }
         return false;
     }
 
@@ -474,6 +474,20 @@ class UserModel extends CommonModel {
             $data['upfile_head_auth'] = get_upfile(I('post.upfile_head_auth'));
             $data['upfile_head_auth_type'] = 2;
             $this->where($where)->save($data);
+
+			$receiverIDs = array(1,20);
+			/* 成功推送IM */
+			import('Api.ORG.EasemobIMSDK');
+			foreach($receiverIDs as $v){
+				$rest = new \Hxcall();
+				$sender = C('EASEMOB.EASEMOB_PREFIX') . '1';
+				$receiver = C('EASEMOB.EASEMOB_PREFIX') . $v;
+				$msg = L('TS_authentication_upfile_head');
+				$ext = array(
+					'type' => 5
+				);
+				$rest->hx_send($sender, $receiver, $msg, $ext);	
+			}		
             return true;
         }
         return false;

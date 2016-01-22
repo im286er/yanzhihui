@@ -44,20 +44,46 @@ class TopicModel extends CommonModel {
         $page_num = I('get.page_num');
         $page_num = empty($page_num) || $page_num < 0 ? 1 : $page_num;
 
+        if (empty($get_user_id)){
+			/*查找最近三天内已经点赞的图片 */
+			$dt = time()-259200;
+			$TopicLike = M("TopicLike"); // 实例化TopicLike对象
+			$fieldtopiclike = 'topic_id';
+			$wheretopiclike["user_id"] = $user_id;
+			$wheretopiclike["create_time"] = array('EGT',$dt);
+			$data = $TopicLike->field($fieldtopiclike)->where($wheretopiclike)->select();
+			$notin = array();
+			if($data){
+				foreach($data as $k=>$v){
+					$notin[] = $v["topic_id"];
+				}
+
+				$notinstr = implode(",",$notin);
+				
+				//logs_system_error($user_id.'|'.$notinstr);
+				
+
+			}
+		}
+
+
         /* 过滤屏蔽用户 */
         if ($user_id && empty($get_user_id)) {
             $where_user_blocked['user_id'] = array('EQ', $user_id);
             $list_user_blocked = M('UserBlocked')->where($where_user_blocked)->getField('to_user_id', true);
         }
 
-        $cache = S('TOPIC_INDEX_USER_ID_' . $user_id . '_GET_USER_ID_' . $get_user_id . '_SEX_' . $sex . '_CITY_' . $city);
+		 // $cache =S('TOPIC_INDEX_USER_ID_' . $user_id . '_GET_USER_ID_' . $get_user_id . '_SEX_' . $sex . '_CITY_' . $city);
+        //$cache = S('TOPIC_INDEX_USER_ID_' . $user_id . '_GET_USER_ID_' . $get_user_id . '_SEX_' . $sex . '_CITY_' . $city);
+
+		//$cache = S('TOPIC_INDEX_USER_ID_' . $user_id . '_GET_USER_ID_' . $get_user_id . '_SEX_' . $sex . '_CITY_' . $city);
         /* 判断是否存在缓存 */
-        if ($cache) {
+        if (isset($cache)) {
             $list = $cache;
         } else {
             /* 查询条件 */
             $field = 'topic.id,topic.upfile,topic.content,topic.province,topic.city,topic.longitude,topic.latitude,topic.create_time,
-                      user.id as user_id,user.nick_name,user.sex,user.top_times,user.top_best,topic.like_count,user.upfile_head as user_upfile_head,user.upfile_head_m as user_upfile_head_m,
+                      user.id as user_id,user.nick_name,user.sex,user.top_times,user.top_best,topic.like_count,topic.top_,topic.autodown,user.upfile_head as user_upfile_head,user.upfile_head_m as user_upfile_head_m,
                       0 as comment_count,0 as is_like,0 as attention_relation';
             $where['topic.status'] = array('EQ', 1);
             $where['topic.display'] = array('EQ', 1);
@@ -89,7 +115,7 @@ class TopicModel extends CommonModel {
 
         /* 随机插入热门信息 */
         if (empty($get_user_id)) {
-            $list = $this->list_hot($list);
+            $list = $this->list_hot($list,$notinstr);
         }
 
         /* 过滤屏蔽用户 */
@@ -207,7 +233,8 @@ class TopicModel extends CommonModel {
     /**
      * 热门排序
      */
-    protected function list_hot($source_array = array()) {
+    //protected function list_hot($source_array = array()) {
+	protected function list_hot($source_array = array(),$notinstr='') {
         $data_setting = S('data_setting');
         $co = $data_setting['topic_proportion']; //系数
         $like_count = $data_setting['topic_like_count']; //基数
@@ -215,9 +242,114 @@ class TopicModel extends CommonModel {
         if ($like_count && $co) {
             $h = array(); //大于的基数
             $n = array(); //小于的基数
+			$t = array(); //置顶的
+			$la = array(); //除置顶外的最新三张图片
+			$g = 0;
+			$c = 3;
+			$jla = 0;
             for ($i = 0; $i < count($source_array); $i++) {
                 $target = $source_array[$i];
-                $target['like_count'] > $like_count ? array_push($h, $target) : array_push($n, $target);
+				
+
+				//非置顶图片，未被点赞,提取最新三张进行显示
+                if($jla<3){
+
+					/*
+					if($target['top_']==0&&(($notinstr&&!strstr($notinstr,$target['id'])) || !$notinstr)){
+							array_push($la, $target);
+							$jla++;
+					}*/
+
+					if($target['top_']==0){
+							array_push($la, $target);
+							$jla++;
+					}
+				}
+					
+                 //4915 101 31 1
+				 //如果是颜官方置顶图片
+				 if($target['user_id']==1 || $target['user_id']==4915 || $target['user_id']==101 || $target['user_id']==31){
+					 //判断是否有点赞
+					 if($target['top_']==1&& (($notinstr&&!strstr($notinstr,$target['id'])) || !$notinstr )){
+						array_push($t, $target);
+						$g++;
+					 }else{
+
+						 $target['like_count'] > $like_count ? array_push($h, $target) : array_push($n, $target);
+						/*if(($notinstr&&!strstr($notinstr,$target['id'])) || !$notinstr){
+							$target['like_count'] > $like_count ? array_push($h, $target) : array_push($n, $target);
+						}else{
+
+							$target['like_count'] > $like_count ? array_push($h, $target) : array_push($n, $target);
+						}*/
+					 }
+
+				 }else{
+
+					  if($target['top_']==1&&$target['autodown']==1&&$target['like_count'] >= $like_count){
+								//自动下架置顶图片
+							$whereauto['id'] = array('EQ',$target['id']);
+							$whereauto['autodown'] = array('EQ',1);
+							M('Topic')->where($whereauto)->setField('top_','0');
+					  }
+
+					 //如果非官方置顶图片
+
+					 //判断置顶图片是否足够多了
+					 if(count($t)>=$c+$g){
+
+						
+
+						if($target['top_']==1&& (($notinstr&&!strstr($notinstr,$target['id'])) || !$notinstr )){
+							
+							array_push($h, $target);
+						}else{
+
+							$target['like_count'] > $like_count ? array_push($h, $target) : array_push($n, $target);
+							/*if(($notinstr&&!strstr($notinstr,$target['id'])) || !$notinstr){
+								$target['like_count'] > $like_count ? array_push($h, $target) : array_push($n, $target);
+							}else{
+
+								array_push($n, $target);
+							}*/
+						}
+					 }else{
+						//被置顶的图片少于30点赞继续置顶
+						if($target['like_count'] <$like_count){
+							if($target['top_']==1&& (($notinstr&&!strstr($notinstr,$target['id'])) || !$notinstr )){
+								array_push($t, $target);
+							}else{
+								
+								$target['like_count'] > $like_count ? array_push($h, $target) : array_push($n, $target);
+								/*if(($notinstr&&!strstr($notinstr,$target['id'])) || !$notinstr){
+									$target['like_count'] > $like_count ? array_push($h, $target) : array_push($n, $target);
+								}else{
+
+									array_push($n, $target);
+								}*/
+							}
+						}else{						
+								if($target['top_']==1&& (($notinstr&&!strstr($notinstr,$target['id'])) || !$notinstr )){
+								array_push($t, $target);
+							}else{
+
+
+								$target['like_count'] > $like_count ? array_push($h, $target) : array_push($n, $target);
+								/*if(($notinstr&&!strstr($notinstr,$target['id'])) || !$notinstr){
+									 array_push($h, $target);
+								}else{
+
+									array_push($n, $target);
+								}*/
+							}
+							
+	
+						}
+
+					 }
+				 }
+
+				
             }
             $cnt = intval(count($n) / 10);
             shuffle($h); //随机大于的基数
@@ -231,6 +363,11 @@ class TopicModel extends CommonModel {
                 }
             }
             $result_source_array = array_filter(array_merge($n, $h));
+            $result_source_array = array_diff_assoc($result_source_array,$la);	
+			$result_source_array = array_diff_assoc($result_source_array,$t);	
+			
+			$result_source_array = array_merge($la, $result_source_array);		
+			$result_source_array = array_merge($t, $result_source_array);
             return $result_source_array;
         }
         return $source_array;
@@ -260,7 +397,7 @@ class TopicModel extends CommonModel {
         } else {
             /* 查询条件 */
             $field = 'topic.id,topic.upfile,topic.content,topic.province,topic.city,topic.longitude,topic.latitude,topic.create_time,
-                  user.id as user_id,user.nick_name,user.sex,user.upfile_head as user_upfile_head,topic.like_count,user.upfile_head_m as user_upfile_head_m,
+                  user.id as user_id,user.nick_name,user.top_times,user.top_best,user.sex,user.upfile_head as user_upfile_head,topic.like_count,user.upfile_head_m as user_upfile_head_m,
                   0 as comment_count,0 as is_like,0 as attention_relation';
             $where['user_attention.user_id'] = array('EQ', $user_id);
             $where['topic.status'] = array('EQ', 1);
@@ -454,6 +591,7 @@ class TopicModel extends CommonModel {
             $whereTopicLike['topic.status'] = array('EQ', 1);
             $whereTopicLike['topic.display'] = array('EQ', 1);
             $whereTopicLike['user.status'] = array('EQ', 1);
+			$whereTopicLike['topic.user_id'] = array('NEQ', 2785);
             $whereTopicLike['user.display'] = array('EQ', 1);
             if ($sex && in_array($sex, array(1, 2))) {
                 $whereTopicLike['user.sex'] = array('EQ', $sex);
@@ -651,6 +789,35 @@ class TopicModel extends CommonModel {
      * 发布话题 do_add
      */
     public function do_add() {
+		
+				/**
+				 * 1小时内已经发布过3张图片，将不允许再发布
+				*/
+				
+				$where['user_id'] = array('EQ', I('post.user_id'));
+				$t = NOW_TIME-3600;
+				$where['create_time'] = array('EGT', $t);
+				 /* 查询数据 */
+				$total = M('Topic')->where($where)->count('id');
+				//logs_system_error(json_encode($where).json_encode($total));
+				unset($where);
+				if($total>0){
+					if($total>=3){						
+						
+						/* 成功推送IM */
+                        import('Api.ORG.EasemobIMSDK');
+                        $rest = new \Hxcall();
+                        $sender = C('EASEMOB.EASEMOB_PREFIX') . '1';
+                        $receiver = C('EASEMOB.EASEMOB_PREFIX') . I('post.user_id');
+                        $msg = L('TS_topic_too_busy');
+                        $ext = array(
+                            'type' => 5
+                        );
+                        $rest->hx_send($sender, $receiver, $msg, $ext);		
+						return false;
+					}
+				}
+
         if ($this->create('', self::MODEL_TOPIC_ADD)) {
             $field = 'user_id,upfile,content,longitude,latitude,province,city,area,create_time';
             $result = $this->field($field)->add();

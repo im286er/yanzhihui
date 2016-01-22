@@ -77,7 +77,7 @@ class TopicLogModel extends CommonModel {
         $user_id = I('get.user_id');
         $model = M('TopicLog');
         $where['user_id'] = array('EQ',$user_id);
-        $order = 'id desc';
+        $order = 'id desc,type desc';
         $list = $model->where($where)->order($order)->select();
         $_list = array();
         if(!empty($list)){

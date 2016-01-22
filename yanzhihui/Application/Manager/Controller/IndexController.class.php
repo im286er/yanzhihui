@@ -14,6 +14,8 @@ class IndexController extends BaseController {
 
     /* 读取菜单 */
     private function get_menus() {
+
+		S('managerAllMenu',null);
         /* 查询缓存 */
         if (!S('managerAllMenu')) {
             /* 读取全部菜单 */

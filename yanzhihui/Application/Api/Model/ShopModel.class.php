@@ -33,17 +33,26 @@ class ShopModel extends CommonModel {
             $list = $cache;
         } else {
             /* 查询条件 */
-            $field = 'id,title,address,upfile,fun_distance(' . $current_latitude . ',' . $current_longitude . ',latitude,longitude) as distance_for_me,0 as want_count,0 as is_want';
+            $field = 'shop.id,shop.title,shop.address,shop.upfile,fun_distance(' . $current_latitude . ',' . $current_longitude . ',shop.latitude,shop.longitude) as distance_for_me,0 as want_count,0 as is_want';
             //$field = 'id,title,address,upfile,0 as want_count,0 as is_want';
-            $where['status'] = array('EQ', 1);
-            $where['display'] = array('EQ', 1);
+            $where['shop.status'] = array('EQ', 1);
+            $where['shop.display'] = array('EQ', 1);
             if ($city) {
-                $where['topic.city'] = array('EQ', $city);
+                $where['shop.city'] = array('EQ', $city);
             }
-            $order = 'distance_for_me asc,id desc';
+
+			$where["shop_account.display"] =array('EQ', 1);
+            $order = 'distance_for_me asc,shop.id desc';
             //$order = 'id desc';
             /* 查询数据 */
-            $list = $this->field($field)->where($where)->order($order)->limit(C('PAGE_NUM_LIST') * C('PAGE_NUM_MAX'))->select();
+            $list = M('Shop')
+				->alias('shop')
+				->field($field)
+				->join(' __SHOP_ACCOUNT__ shop_account on shop_account.id=shop.shop_account_id ')
+				->where($where)				
+				->order($order)
+				->limit(C('PAGE_NUM_LIST') * C('PAGE_NUM_MAX'))
+				->select();
 
             /* 设置缓存 */
             S('SHOP_INDEX_USER_ID_' . $user_id . '_CITY_' . $city, $list, C('CACHE_TIME'));

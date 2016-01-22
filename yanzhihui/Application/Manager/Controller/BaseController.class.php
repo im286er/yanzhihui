@@ -301,4 +301,46 @@ class BaseController extends Controller {
     public function _empty() {
         R('Empty/index');
     }
+
+
+	 /**
+     * 设置置顶 do_top_
+     * @param null $name
+     * @param bool $statusUp
+     */
+    protected function do_top_($name = NULL, $statusUp = 1, $options = array()) {
+        if (!$name) {
+            $name = CONTROLLER_NAME;
+        }
+        $model = D($name);
+        $result = $model->do_top_($options, $statusUp);
+        /* 返回信息 */
+        if ($result) {
+            /* 成功回调执行函数 */
+          
+            $this->ajaxReturn(array('msg' => L('YZ_operation_success'), 'result' => 1));
+        }
+        $this->ajaxReturn(array('msg' => L('YZ_operation_fail'), 'result' => 1));
+    }
+
+
+	/**
+     * 设置置顶 do_autodown
+     * @param null $name
+     * @param bool $statusUp
+     */
+    protected function do_autodown($name = NULL, $statusUp = 1, $options = array()) {
+        if (!$name) {
+            $name = CONTROLLER_NAME;
+        }
+        $model = D($name);
+        $result = $model->do_autodown($options, $statusUp);
+        /* 返回信息 */
+        if ($result) {
+            /* 成功回调执行函数 */
+          
+            $this->ajaxReturn(array('msg' => L('YZ_operation_success'), 'result' => 1));
+        }
+        $this->ajaxReturn(array('msg' => L('YZ_operation_fail'), 'result' => 1));
+    }
 }
